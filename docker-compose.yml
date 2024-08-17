@@ -6,7 +6,8 @@ services:
     build:
       context: .
       dockerfile: builder/frontend/Dockerfile
-    command: ["node", "-e", "console.log('Node environment is up and running')"]
+    ports:
+      - "8080:8080"  # ホストの8080ポートをコンテナの8080ポートにマッピング
     networks:
       - conobel-network
 
@@ -15,7 +16,8 @@ services:
     build:
       context: .
       dockerfile: builder/backend/Dockerfile
-    command: ["ruby", "-e", "puts 'Ruby environment is up and running'"]
+    ports:
+      - "8081:8081"  # ホストの8081ポートをコンテナの8081ポートにマッピング
     networks:
       - conobel-network
 
