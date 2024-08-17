@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: builder/frontend/Dockerfile
     ports:
-      - "8080:8080"  # ホストの8080ポートをコンテナの8080ポートにマッピング
+      - "8080:8080"
     networks:
       - conobel-network
 
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: builder/backend/Dockerfile
     ports:
-      - "8081:8081"  # ホストの8081ポートをコンテナの8081ポートにマッピング
+      - "8081:8081"
     networks:
       - conobel-network
 
