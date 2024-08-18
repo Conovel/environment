@@ -7,7 +7,9 @@ services:
       context: .
       dockerfile: builder/frontend/Dockerfile
     ports:
-      - "8080:8080"
+      - "3000:3000"
+    environment:
+      - PORT=3000
     networks:
       - conobel-network
 
