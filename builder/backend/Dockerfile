@@ -1,11 +1,6 @@
 FROM ruby:3.3.4-slim
-
 WORKDIR /app
-COPY backend/Gemfile ./
+COPY backend/Gemfile backend/Gemfile.lock ./
 RUN bundle install
-COPY . .
-CMD ["ruby", "-run", "-e", "httpd", ".", "-p", "8081"]
-
-# RUN groupadd -r ruby && useradd -r -g ruby ruby
-# WORKDIR /usr/src/app
-# RUN chown -R ruby:ruby /usr/src/app
+COPY backend ./
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

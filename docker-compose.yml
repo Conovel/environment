@@ -19,9 +19,13 @@ services:
       context: .
       dockerfile: builder/backend/Dockerfile
     ports:
-      - "8081:8081"
+      - "3001:3001"
     networks:
       - conobel-network
+    depends_on:
+      - db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
   db:
     container_name: db
