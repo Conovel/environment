@@ -26,6 +26,8 @@ services:
       - db
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    env_file:
+      - .env
 
   db:
     container_name: db
@@ -38,6 +40,8 @@ services:
       - "3306:3306"
     networks:
       - conobel-network
+    env_file:
+      - .env
 
 networks:
   conobel-network:
