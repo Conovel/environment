@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   frontend:
     container_name: frontend
@@ -12,7 +10,7 @@ services:
       - PORT=3000
     networks:
       - conobel-network
-
+  
   backend:
     container_name: backend
     build:
@@ -28,7 +26,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     env_file:
       - .env
-
+  
   db:
     container_name: db
     build:
@@ -42,7 +40,12 @@ services:
       - conobel-network
     env_file:
       - .env
+    volumes:
+      - db_data:/var/lib/mysql
 
 networks:
   conobel-network:
     driver: bridge
+
+volumes:
+  db_data:
