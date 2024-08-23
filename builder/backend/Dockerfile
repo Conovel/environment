@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libxml2-dev \
     libxslt1-dev \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
