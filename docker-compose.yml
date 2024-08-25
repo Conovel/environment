@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=3000
     networks:
-      - conobel-network
+      - conovel-network
   
   backend:
     container_name: backend
@@ -19,7 +19,7 @@ services:
     ports:
       - "3001:3001"
     networks:
-      - conobel-network
+      - conovel-network
     depends_on:
       - db
     environment:
@@ -37,14 +37,14 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - conobel-network
+      - conovel-network
     env_file:
       - .env
     volumes:
       - db_data:/var/lib/mysql
 
 networks:
-  conobel-network:
+  conovel-network:
     driver: bridge
 
 volumes:
