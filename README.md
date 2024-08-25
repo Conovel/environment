@@ -7,6 +7,11 @@
 $ git clone https://github.com/Conovel/environment.git
 ```
 
+※Windows環境だと改行コードが変換されてしまう可能性があります。その場合は`git clone`を実行する前に下記のコマンドを実行してください。
+```
+$ git config --global core.autocrlf input
+```
+
 リポジトリに移動
 ```sh
 $ cd environment
