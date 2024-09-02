@@ -1,0 +1,51 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: builder/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    networks:
+      - conovel-network
+  
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: builder/backend/Dockerfile
+    ports:
+      - "3001:3001"
+    networks:
+      - conovel-network
+    depends_on:
+      - db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    env_file:
+      - .env
+  
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: builder/db/Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    networks:
+      - conovel-network
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  conovel-network:
+    driver: bridge
+
+volumes:
+  db_data:
