@@ -130,8 +130,6 @@ PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
 ```
 
-#### API関連ファイル
-
 ### backend
 
 #### Railsファイル（API設定ファイル）
