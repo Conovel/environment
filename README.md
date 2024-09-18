@@ -145,7 +145,7 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 - ルーティング設定:
   - `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
 - コントローラー:
-  - `backend/openapigen/app/controllers/pets_controller.rb`: APIエンドポイントのコントローラーが含まれています。ここで各エンドポイントのアクションを定義します。
+  - `backend/openapigen/app/controllers/xxxx_controller.rb`: APIエンドポイントのコントローラーが含まれています。ここで各エンドポイントのアクションを定義します（xxx部分はymlファイルの設定によって変動）
 - モデル:
   - `backend/openapigen/app/models/pet.rb`: APIで使用されるモデルが含まれています。
 - 設定ファイル:
