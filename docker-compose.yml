@@ -22,8 +22,6 @@ services:
       - conovel-network
     depends_on:
       - db
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     env_file:
       - .env
   
