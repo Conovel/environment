@@ -148,6 +148,20 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 - `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
 - `backend/openapigen/config/environments/production.rb`: 本番環境の設定が含まれています。
 
+#### テスト
+
+rspecによるテスト（APIの修正後に実行）
+```sh
+$ docker-compose exec backend bundle bundle exec rspec
+```
+
+#### Swaggerファイル生成
+openapiドキュメント
+```sh
+$ docker-compose exec backend bundle bundle exec rake rswag:specs:swaggerize
+```
+- `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
+
 ### frontend
 
 #### TypeScriptファイル（API設定ファイル）
