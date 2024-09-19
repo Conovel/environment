@@ -24,7 +24,9 @@ services:
       - db
     env_file:
       - .env
-  
+    volumes:
+      - swagger_data:/app/swagger
+
   db:
     container_name: db
     build:
@@ -47,3 +49,4 @@ networks:
 
 volumes:
   db_data:
+  swagger_data:
