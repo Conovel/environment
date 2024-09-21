@@ -107,7 +107,7 @@ docker起動で下記のローカルサーバも起動する
 - フロントエンド：http://localhost:3000
 - バックエンド：http://localhost:3001
 
-## Open generator
+## OpenAPI generator
 
 ### enviroment
 
@@ -155,8 +155,8 @@ rspecによるテスト（APIの修正後に実行）
 $ docker-compose exec backend bundle bundle exec rspec
 ```
 
-#### Swaggerファイル生成
-openapiドキュメント
+#### SwaggerUI
+SwaggerUIはopenApiドキュメント
 ```sh
 $ docker-compose exec backend bundle bundle exec rake rswag:specs:swaggerize
 ```
