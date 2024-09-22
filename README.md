@@ -118,9 +118,11 @@ docker起動で下記のローカルサーバも起動する
 ```sh
 PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 ```
+- mac or linux などのシェル環境を想定
+- Windows環境の場合は[PowerShell](https://learn.microsoft.com/ja-jp/powershell/scripting/samples/managing-current-location?view=powershell-7.4)形式で記載する必要があります
 
 #### ymlファイル
-- `conovel_openapi.yml`：API設定情報が書かれています
+- `conovel_openapi.yml`：APIの定義情報が書かれています
 
 #### APIドキュメント
 - `onenapigen/index.html`：上記ymlファイルから生成されるAPIドキュメント
