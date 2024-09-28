@@ -102,7 +102,81 @@ bin/rails db:migrate
 exit
 ```
 
-# ローカル環境のurl
+## ローカル環境のurl
 docker起動で下記のローカルサーバも起動する
 - フロントエンド：http://localhost:3000
 - バックエンド：http://localhost:3001
+
+## OpenAPI generator
+
+### enviroment
+
+#### 環境変数
+- `.env`ファイルにPROJECT_ROOT追加
+
+例：下記のパスは開発者の環境によって変動します
+```sh
+PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
+```
+- mac or linux などのシェル環境を想定
+- Windows環境の場合は[PowerShell](https://learn.microsoft.com/ja-jp/powershell/scripting/samples/managing-current-location?view=powershell-7.4)形式で記載する必要があります
+
+#### ymlファイル
+- `conovel_openapi.yml`：APIの定義情報が書かれています
+
+#### APIドキュメント
+- `onenapigen/index.html`：上記ymlファイルから生成されるAPIドキュメント
+
+下記のコマンドを実行するとファイルが生成されます
+```sh
+docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
+```
+
+### backend
+
+#### Railsファイル（API設定ファイル）
+- `backend/onenapigen`ディレクトリ：上記ymlファイルから生成されるRailsファイル
+
+下記のコマンドを実行するとファイルが生成されます
+```sh
+docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g ruby-on-rails -o /local/backend/openapigen
+```
+
+#### API関連ファイル
+下記のファイルを参考にAPI設定をRails本体ファイルに反映してください。
+- `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
+- `backend/openapigen/app/controllers/xxxx_controller.rb`: APIエンドポイントのコントローラーが含まれています。ここで各エンドポイントのアクションを定義します（xxx部分はymlファイルの設定によって変動）
+- `backend/openapigen/app/models/pet.rb`: APIで使用されるモデルが含まれています。
+- `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
+- `backend/openapigen/config/environments/production.rb`: 本番環境の設定が含まれています。
+
+#### テスト
+
+rspecによるテスト（APIの修正後に実行）
+```sh
+$ docker-compose exec backend bundle bundle exec rspec
+```
+
+#### SwaggerUI
+SwaggerUIはopenApiドキュメント
+```sh
+$ docker-compose exec backend bundle bundle exec rake rswag:specs:swaggerize
+```
+- `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
+
+### frontend
+
+#### TypeScriptファイル（API設定ファイル）
+- `frontend/onenapigen`ディレクトリ：上記ymlファイルから生成されるAxios（typescript-axios）ファイル
+
+下記のコマンドを実行するとファイルが生成されます
+```sh
+docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g typescript-axios -o /local/frontend/openapigen
+```
+
+#### API関連ファイル
+下記のファイルを参考にAPI設定をReact本体ファイルに反映してください。
+- `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
+- `frontend/openapigen/base.ts`: RequestArgsインターフェースが定義されています。APIリクエストの引数に関する設定を行う際に使用します。
+- `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
+- `frontend/openapigen/common.ts`: APIクライアントの生成に必要な共通のユーティリティ関数や型定義を含むファイルです。

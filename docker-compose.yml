@@ -23,10 +23,14 @@ services:
     depends_on:
       - db
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DEVELOPMENT_ORIGIN_URL=${DEVELOPMENT_ORIGIN_URL}
+      - PRODUCTION_ORIGIN_URL=${PRODUCTION_ORIGIN_URL}
     env_file:
       - .env
-  
+    volumes:
+      - swagger_data:/app/swagger
+
   db:
     container_name: db
     build:
@@ -49,3 +53,4 @@ networks:
 
 volumes:
   db_data:
+  swagger_data:
