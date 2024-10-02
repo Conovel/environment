@@ -97,9 +97,26 @@ bin/rails db:create
 bin/rails db:migrate
 ```
 
-#### シェルから出る場合
+#### 4. シェルから出る
 ```sh
 exit
+```
+
+### シードデータの再実行
+以下のコマンドを使用して、シードデータを再度実行します。
+```sh
+docker-compose exec backend bin/rails db:seed
+```
+
+### データの確認
+Railsコンソールを使用して、データが正しく挿入されたか確認します。
+```sh
+docker-compose exec backend bin/rails console
+```
+
+コンソール内で以下のコマンドを実行します。
+```sh
+Sentence.all # Sentenceはモデル名の一例
 ```
 
 ## ローカル環境のurl
