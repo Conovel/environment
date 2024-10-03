@@ -103,10 +103,11 @@ exit
 ```
 
 ### シードデータの再実行
-以下のコマンドを使用して、シードデータを再度実行します。
+シードデータを修正した際は、下記のコマンドでシードデータを再度実行します
 ```sh
 docker-compose exec backend bin/rails db:seed
 ```
+- シードデータ：ローカルの開発環境のためにデータベースに登録する初期データ
 
 ### データの確認
 Railsコンソールを使用して、データが正しく挿入されたか確認します。
@@ -116,8 +117,10 @@ docker-compose exec backend bin/rails console
 
 コンソール内で以下のコマンドを実行します。
 ```sh
-Sentence.all # Sentenceはモデル名の一例
+ModelName.all # ModelNameはモデル名
 ```
+- Railsコンソールを閉じる→Cmd + C（WindowsはContral + C）
+- シェルを閉じる→`exit`
 
 ## ローカル環境のurl
 docker起動で下記のローカルサーバも起動する
