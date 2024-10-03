@@ -152,6 +152,12 @@ PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
 ```
 
+もし上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
+```
+その後、再度OpenAPIドキュメントの生成コマンドを実行してください。
+
 ### backend
 
 #### Railsファイル（API設定ファイル）
