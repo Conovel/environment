@@ -5,6 +5,8 @@ info:
 paths:
   /v1/sentences/{sentence_id}:
     get:
+      tags:
+        - sentences
       summary: Get a sentence by ID
       parameters:
         - name: sentence_id
