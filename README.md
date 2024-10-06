@@ -184,7 +184,7 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 
 rspecによるテスト（APIの修正後に実行）
 ```sh
-$ docker-compose exec backend bundle bundle exec rspec
+$ docker-compose exec backend bundle exec rspec
 ```
 
 #### SwaggerUI
