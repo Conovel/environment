@@ -3,11 +3,11 @@ info:
   title: Sentences API
   version: 1.0.0
 paths:
-  /v1/sentences/{id}:
+  /v1/sentences/{sentence_id}:
     get:
       summary: Get a sentence by ID
       parameters:
-        - name: id
+        - name: sentence_id
           in: path
           required: true
           schema:
@@ -20,15 +20,18 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: integer
-                  sentence:
-                    type: string
-                  created_at:
-                    type: string
-                    format: date-time
-                  updated_at:
-                    type: string
-                    format: date-time
+                  main:
+                    type: object
+                    properties:
+                      sentence_id:
+                        type: integer
+                      sentence:
+                        type: string
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
         '404':
           description: Sentence not found
