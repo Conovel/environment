@@ -73,6 +73,13 @@ $ docker-compose logs
 $ docker-compose logs db
 ```
 
+## ローカル環境のurl
+docker起動で下記のローカルサーバも起動する
+- フロントエンド：http://localhost:3000
+- バックエンド：http://localhost:3001
+
+## データベース
+
 ### データベースの手動生成
 通常、データベースのデータはDockerボリュームを使用して永続化されるため、コンテナの再起動後もデータは保持されます。そのため、手動でデータベースの初期化やマイグレーションを行う必要はありません。
 
@@ -96,6 +103,7 @@ bin/rails db:create
 ```sh
 bin/rails db:migrate
 ```
+- 既存テーブルの修正時にも実行
 
 #### 4. シェルから出る
 ```sh
@@ -121,11 +129,6 @@ ModelName.all # ModelNameはモデル名
 ```
 - Railsコンソールを閉じる→Cmd + C（WindowsはContral + C）
 - シェルを閉じる→`exit`
-
-## ローカル環境のurl
-docker起動で下記のローカルサーバも起動する
-- フロントエンド：http://localhost:3000
-- バックエンド：http://localhost:3001
 
 ## OpenAPI generator
 
