@@ -178,7 +178,7 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 - `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
 - `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
 - `backend/openapigen/config/environments/production.rb`: 本番環境の設定が含まれています。
-- `backend/openapigen/db/migrate/xxx_tables.rb`：データベースのマイグレーションファイル（API仕様の内容のテーブルを作成する内容のため反映には注意が必要）
+- (`backend/openapigen/db/migrate/xxx_tables.rb`)：データベースのマイグレーションファイル（API仕様の内容のテーブルを作成する内容のため反映には注意が必要）
 
 #### テスト
 
@@ -190,7 +190,7 @@ $ docker-compose exec backend bundle exec rspec
 #### SwaggerUI
 SwaggerUIはopenApiドキュメント
 ```sh
-$ docker-compose exec backend bundle bundle exec rake rswag:specs:swaggerize
+$ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 ```
 - `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
 
