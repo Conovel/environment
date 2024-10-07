@@ -189,11 +189,37 @@ $ docker-compose exec backend bundle exec rspec
 
 #### SwaggerUI
 SwaggerUIはopenApiドキュメント
+
+##### SwaggerUIドキュメント生成
 ```sh
 $ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 ```
 - `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
 
+##### Swaggerドキュメントの更新
+テストファイルの作成/更新: openapiの更新を行った後は`spec/requests/xxxx_spec.rb`などのテストファイルも作成または更新します。
+```sh
+$ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
+```
+
+Swaggerファイルの再生成: 以下のコマンドを実行してSwaggerファイルを再生成します。
+```sh
+$ docker-compose exec backend cat /app/swagger/v1/swagger.yaml
+```
+
+Swaggerファイルの内容の確認: 生成されたSwaggerファイルの内容が最新のAPI仕様を反映しているか確認します。
+```sh
+$ docker-compose exec backend cat /app/swagger/v1/swagger.yaml
+```
+
+Swaggerファイルの配置: 生成されたSwaggerファイルをpublic/api-docs/v1ディレクトリにコピーします。
+```sh
+$ docker-compose exec backend mkdir -p /app/public/api-docs/v1
+$ docker-compose exec backend cp /app/swagger/v1/swagger.yaml /app/public/api-docs/v1/swagger.yaml
+```
+- `http://localhost:3001/api-docs/index.html`に変更が反映されない場合はdockerのキャッシュクリア、再ビルド、再起動などを行います
+
+##### SwaggerUIのルーティング設定
 `backend/config/routes.rb`の上書き修正などでSwaggerUIのルーティング設定が削除された場合はルーティングエラーになります。その場合は下記のルーティング設定を追加してください
 ```ruby
 # config/routes.rb
