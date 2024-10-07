@@ -194,6 +194,18 @@ $ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 ```
 - `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
 
+`backend/config/routes.rb`の上書き修正などでSwaggerUIのルーティング設定が削除された場合はルーティングエラーになります。その場合は下記のルーティング設定を追加してください
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  # 他のルート定義...
+
+  # Swagger UI
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+end
+```
+
 ### frontend
 
 #### TypeScriptファイル（API設定ファイル）
