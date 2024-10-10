@@ -22,20 +22,24 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  main:
-                    type: object
-                    properties:
-                      sentence_id:
-                        type: integer
-                      sentence:
-                        type: string
-                      created_at:
-                        type: string
-                        format: date-time
-                      updated_at:
-                        type: string
-                        format: date-time
+                $ref: "#/components/schemas/Sentence"
         '404':
           description: Sentence not found
+components:
+  schemas:
+    Sentence:
+      type: object
+      properties:
+        main:
+          type: object
+          properties:
+            sentence_id:
+              type: integer
+            sentence:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
