@@ -202,11 +202,6 @@ $ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 $ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 ```
 
-Swaggerファイルの再生成: 以下のコマンドを実行してSwaggerファイルを再生成します。
-```sh
-$ docker-compose exec backend cat /app/swagger/v1/swagger.yaml
-```
-
 Swaggerファイルの内容の確認: 生成されたSwaggerファイルの内容が最新のAPI仕様を反映しているか確認します。
 ```sh
 $ docker-compose exec backend cat /app/swagger/v1/swagger.yaml
