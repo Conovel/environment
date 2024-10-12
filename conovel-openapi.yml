@@ -43,3 +43,7 @@ components:
             updated_at:
               type: string
               format: date-time
+    Sentences:
+      type: array
+      items:
+        $ref: "#/components/schemas/Sentence"
