@@ -22,7 +22,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Sentence"
+                $ref: "#/components/schemas/ViewSentence"
         '404':
           description: Sentence not found
 components:
@@ -30,20 +30,22 @@ components:
     Sentence:
       type: object
       properties:
-        main:
-          type: object
-          properties:
-            sentence_id:
-              type: integer
-            sentence:
-              type: string
-            created_at:
-              type: string
-              format: date-time
-            updated_at:
-              type: string
-              format: date-time
+        sentence_id:
+          type: integer
+        sentence:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     Sentences:
       type: array
       items:
         $ref: "#/components/schemas/Sentence"
+    ViewSentence:
+      type: object
+      properties:
+        main:
+          $ref: "#/components/schemas/Sentence"
