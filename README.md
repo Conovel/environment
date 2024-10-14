@@ -110,6 +110,29 @@ bin/rails db:migrate
 exit
 ```
 
+### テーブルの確認
+
+作成したの構成を確認するには下記コマンドでmysqlに接続
+```sh
+$ docker-compose exec db mysql -u root -p
+```
+
+`.env`ファイルにあるdbのパスワードを入力
+```sh
+Enter password: 
+```
+
+`USE`コマンドでローカル開発環境のデータベース名を実行
+```sh
+mysql> USE myapp_development;
+```
+
+`DESCRIBE`コマンドでテーブル名を実行
+```sh
+mysql> DESCRIBE テーブル名;
+```
+テーブルの構成（カラム一覧）が表示される
+
 ### シードデータの再実行
 シードデータを修正した際は、下記のコマンドでシードデータを再度実行します
 ```sh
