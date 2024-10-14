@@ -239,7 +239,8 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 
 #### API関連ファイル
 下記のファイルを参考にAPI設定をReact本体ファイルに反映してください。
-- `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
+- `frontend/openapigen/api.ts`: APIエンドポイントに対応する関数や型定義されており、APIリクエストを簡単に行うためのインターフェースを提供します。
 - `frontend/openapigen/base.ts`: RequestArgsインターフェースが定義されています。APIリクエストの引数に関する設定を行う際に使用します。
-- `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
 - `frontend/openapigen/common.ts`: APIクライアントの生成に必要な共通のユーティリティ関数や型定義を含むファイルです。
+- `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
+- `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
