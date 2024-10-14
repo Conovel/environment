@@ -112,7 +112,7 @@ exit
 
 ### テーブルの確認
 
-作成したの構成を確認するには下記コマンドでmysqlに接続
+作成したテーブルの構成を確認するには下記コマンドでmysqlに接続
 ```sh
 $ docker-compose exec db mysql -u root -p
 ```
