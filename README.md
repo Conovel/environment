@@ -140,7 +140,7 @@ docker-compose exec backend bin/rails db:seed
 ```
 - シードデータ：ローカルの開発環境のためにデータベースに登録する初期データ
 
-### データの確認
+### シードデータの確認
 Railsコンソールを使用して、データが正しく挿入されたか確認します。
 ```sh
 docker-compose exec backend bin/rails console
