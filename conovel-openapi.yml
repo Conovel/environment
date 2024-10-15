@@ -9,6 +9,7 @@ paths:
     get:
       tags:
         - sentences
+      operationId: getSentenceById
       summary: Get a sentence by ID
       parameters:
         - name: sentence_id
