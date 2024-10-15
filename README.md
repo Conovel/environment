@@ -198,9 +198,9 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 下記のファイルを参考にAPI設定をRails本体ファイルに反映してください
 - `backend/openapigen/app/controllers/xxxx_controller.rb`: APIエンドポイントのコントローラーが含まれています。ここで各エンドポイントのアクションを定義します（xxx部分はymlファイルの設定によって変動）
 - `backend/openapigen/app/models/xxx.rb`: APIで使用されるモデルが含まれています（xxx部分はymlファイルの設定によって変動）
-- `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
-- `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
 - `backend/openapigen/config/environments/production.rb`: 本番環境の設定が含まれています。
+- `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
+- `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
 - (`backend/openapigen/db/migrate/xxx_tables.rb`)：データベースのマイグレーションファイル（API仕様の内容のテーブルを作成する内容のため反映には注意が必要）
 
 #### テスト
