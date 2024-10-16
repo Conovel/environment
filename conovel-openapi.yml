@@ -35,6 +35,16 @@ components:
           type: integer
         sentence:
           type: string
+        sentence_user_id:
+          type: integer
+        sentence_user_name:
+          type: string
+        profile_icon_image:
+          type: string
+        evaluation_good_count:
+          type: integer
+        evaluation_bad_count:
+          type: integer
         created_at:
           type: string
           format: date-time
@@ -50,3 +60,9 @@ components:
       properties:
         main:
           $ref: "#/components/schemas/Sentence"
+        parent:
+          $ref: "#/components/schemas/Sentence"
+        parentParallel:
+          $ref: "#/components/schemas/Sentences"
+        children:
+          $ref: "#/components/schemas/Sentences"
