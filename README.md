@@ -73,6 +73,13 @@ $ docker-compose logs
 $ docker-compose logs db
 ```
 
+## ローカル環境のurl
+docker起動で下記のローカルサーバも起動する
+- フロントエンド：http://localhost:3000
+- バックエンド：http://localhost:3001
+
+## データベース
+
 ### データベースの手動生成
 通常、データベースのデータはDockerボリュームを使用して永続化されるため、コンテナの再起動後もデータは保持されます。そのため、手動でデータベースの初期化やマイグレーションを行う必要はありません。
 
@@ -96,16 +103,55 @@ bin/rails db:create
 ```sh
 bin/rails db:migrate
 ```
+- 既存テーブルの修正時にも実行
 
-#### シェルから出る場合
+#### 4. シェルから出る
 ```sh
 exit
 ```
 
-## ローカル環境のurl
-docker起動で下記のローカルサーバも起動する
-- フロントエンド：http://localhost:3000
-- バックエンド：http://localhost:3001
+### テーブルの確認
+
+作成したテーブルの構成を確認するには下記コマンドでmysqlに接続
+```sh
+$ docker-compose exec db mysql -u root -p
+```
+
+`.env`ファイルにあるdbのパスワードを入力
+```sh
+Enter password: 
+```
+
+`USE`コマンドでローカル開発環境のデータベース名を実行
+```sh
+mysql> USE myapp_development;
+```
+
+`DESCRIBE`コマンドでテーブル名を実行
+```sh
+mysql> DESCRIBE テーブル名;
+```
+テーブルの構成（カラム一覧）が表示される
+
+### シードデータの再実行
+シードデータを修正した際は、下記のコマンドでシードデータを再度実行します
+```sh
+docker-compose exec backend bin/rails db:seed
+```
+- シードデータ：ローカルの開発環境のためにデータベースに登録する初期データ
+
+### シードデータの確認
+Railsコンソールを使用して、データが正しく挿入されたか確認します。
+```sh
+docker-compose exec backend bin/rails console
+```
+
+コンソール内で以下のコマンドを実行します。
+```sh
+ModelName.all # ModelNameはモデル名
+```
+- Railsコンソールを閉じる→Cmd + C（WindowsはContral + C）
+- シェルを閉じる→`exit`
 
 ## OpenAPI generator
 
@@ -132,6 +178,12 @@ PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
 ```
 
+もし上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
+```
+その後、再度OpenAPIドキュメントの生成コマンドを実行してください。
+
 ### backend
 
 #### Railsファイル（API設定ファイル）
@@ -143,26 +195,60 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 ```
 
 #### API関連ファイル
-下記のファイルを参考にAPI設定をRails本体ファイルに反映してください。
-- `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
+下記のファイルを参考にAPI設定をRails本体ファイルに反映してください
 - `backend/openapigen/app/controllers/xxxx_controller.rb`: APIエンドポイントのコントローラーが含まれています。ここで各エンドポイントのアクションを定義します（xxx部分はymlファイルの設定によって変動）
-- `backend/openapigen/app/models/pet.rb`: APIで使用されるモデルが含まれています。
-- `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
+- `backend/openapigen/app/models/xxx.rb`: APIで使用されるモデルが含まれています（xxx部分はymlファイルの設定によって変動）
 - `backend/openapigen/config/environments/production.rb`: 本番環境の設定が含まれています。
+- `backend/openapigen/config/application.rb`: Railsアプリケーションの設定が含まれています。
+- `backend/openapigen/config/routes.rb`: APIのルーティング設定が含まれています。add_openapi_routeメソッドを使用してルートを追加しています。
+- (`backend/openapigen/db/migrate/xxx_tables.rb`)：データベースのマイグレーションファイル（API仕様の内容のテーブルを作成する内容のため反映には注意が必要）
 
 #### テスト
 
 rspecによるテスト（APIの修正後に実行）
 ```sh
-$ docker-compose exec backend bundle bundle exec rspec
+$ docker-compose exec backend bundle exec rspec
 ```
 
 #### SwaggerUI
 SwaggerUIはopenApiドキュメント
+
+##### SwaggerUIドキュメント生成
 ```sh
-$ docker-compose exec backend bundle bundle exec rake rswag:specs:swaggerize
+$ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
 ```
 - `http://localhost:3001/api-docs/index.html`で開くとドキュメントが確認できる
+
+##### Swaggerドキュメントの更新
+テストファイルの作成/更新: openapiの更新を行った後は`spec/requests/xxxx_spec.rb`などのテストファイルも作成または更新します。
+```sh
+$ docker-compose exec backend bundle exec rake rswag:specs:swaggerize
+```
+
+Swaggerファイルの内容の確認: 生成されたSwaggerファイルの内容が最新のAPI仕様を反映しているか確認します。
+```sh
+$ docker-compose exec backend cat /app/swagger/v1/swagger.yaml
+```
+
+Swaggerファイルの配置: 生成されたSwaggerファイルをpublic/api-docs/v1ディレクトリにコピーします。
+```sh
+$ docker-compose exec backend mkdir -p /app/public/api-docs/v1
+$ docker-compose exec backend cp /app/swagger/v1/swagger.yaml /app/public/api-docs/v1/swagger.yaml
+```
+- `http://localhost:3001/api-docs/index.html`に変更が反映されない場合はdockerのキャッシュクリア、再ビルド、再起動などを行います
+
+##### SwaggerUIのルーティング設定
+`backend/config/routes.rb`の上書き修正などでSwaggerUIのルーティング設定が削除された場合はルーティングエラーになります。その場合は下記のルーティング設定を追加してください
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  # 他のルート定義...
+
+  # Swagger UI
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+end
+```
 
 ### frontend
 
@@ -176,7 +262,8 @@ docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli gen
 
 #### API関連ファイル
 下記のファイルを参考にAPI設定をReact本体ファイルに反映してください。
-- `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
+- `frontend/openapigen/api.ts`: APIエンドポイントに対応する関数や型定義されており、APIリクエストを簡単に行うためのインターフェースを提供します。
 - `frontend/openapigen/base.ts`: RequestArgsインターフェースが定義されています。APIリクエストの引数に関する設定を行う際に使用します。
-- `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
 - `frontend/openapigen/common.ts`: APIクライアントの生成に必要な共通のユーティリティ関数や型定義を含むファイルです。
+- `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
+- `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
