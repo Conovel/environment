@@ -43,7 +43,7 @@ components:
           type: string
         evaluation_good_count:
           type: integer
-        evaluation_bad_count:
+        evaluation_stay_count:
           type: integer
         created_at:
           type: string
