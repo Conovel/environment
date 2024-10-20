@@ -65,12 +65,9 @@ $ docker-compose down --remove-orphans
 Dockerイメージをビルド
 ```sh
 $ docker-compose build
-```
-- クリーンアップを行った後に実行
 
-キャッシュを使わずにDockerイメージをビルド
-```sh
-$ docker build --no-cache
+# キャッシュを使わずにビルド
+$ docker-compose build --no-cache
 ```
 
 ログの出力
