@@ -183,7 +183,7 @@ PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
 ```
 
-もし上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
 ```sh
 export $(grep -v '^#' .env | xargs)
 ```
@@ -197,6 +197,11 @@ export $(grep -v '^#' .env | xargs)
 下記のコマンドを実行するとファイルが生成されます
 ```sh
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g ruby-on-rails -o /local/backend/openapigen
+```
+
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
 ```
 
 #### API関連ファイル
@@ -263,6 +268,11 @@ end
 下記のコマンドを実行するとファイルが生成されます
 ```sh
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g typescript-axios -o /local/frontend/openapigen
+```
+
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
 ```
 
 #### API関連ファイル
