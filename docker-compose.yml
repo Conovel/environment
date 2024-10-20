@@ -10,7 +10,11 @@ services:
       - PORT=3000
     networks:
       - conovel-network
-  
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    # command: sh -c "vite --host --port ${PORT:-3000}"
+
   backend:
     container_name: backend
     build:
@@ -24,6 +28,8 @@ services:
       - db
     environment:
       - DB_HOST=${DB_HOST}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
       - DEVELOPMENT_ORIGIN_URL=${DEVELOPMENT_ORIGIN_URL}
       - PRODUCTION_ORIGIN_URL=${PRODUCTION_ORIGIN_URL}
     env_file:
@@ -31,6 +37,7 @@ services:
     volumes:
       - ./backend:/app
       - swagger_data:/app/swagger
+    command: sh -c "bundle exec rails db:migrate db:seed && bundle exec puma -C config/puma.rb"
 
   db:
     container_name: db
@@ -38,7 +45,10 @@ services:
       context: .
       dockerfile: builder/db/Dockerfile
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: myapp_development
+      MYSQL_USER: ${MYAPP_DATABASE_USERNAME}
+      MYSQL_PASSWORD: ${MYAPP_DATABASE_PASSWORD}
     ports:
       - "3306:3306"
     networks:
