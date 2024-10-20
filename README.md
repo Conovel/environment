@@ -30,11 +30,14 @@ $ git submodule update --init --recursive
 
 Dockerコンテナを起動
 ```sh
+# フォアグラウンドで起動（ターミナルにログが表示される）
+$ docker-compose up
+
 # バックグラウンドで起動
 $ docker-compose up -d
 
-# フォアグラウンドで起動（ログが表示される）
-$ docker-compose up
+#  新しいイメージを使ってコンテナを再起動
+$ docker-compose up --build
 ```
 - フォアグランドで起動時は常にログが表示されます
 - フォアグランドで起動時はターミナルにコマンドを追記できないため、Cntrol + CでDockerを停止するか別のターミナルを開く必要があります
@@ -59,11 +62,16 @@ $ docker-compose down --remove-orphans
 ```
 - クリーンアップは大きな修正を行った時など
 
-Dockerコンテナのビルド
+Dockerイメージをビルド
 ```sh
 $ docker-compose build
 ```
 - クリーンアップを行った後に実行
+
+キャッシュを使わずにDockerイメージをビルド
+```sh
+$ docker build --no-cache
+```
 
 ログの出力
 ```sh
