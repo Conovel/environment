@@ -326,15 +326,15 @@ font-style: italic;
     <h3><a name="Sentence"><code>Sentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">sentence_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">evaluation_stay_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
-<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+      <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の一意のid（この値は他の投稿と重複しない必要があります） format: int64</div>
+<div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿の本文テキスト </div>
+<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の親投稿のid format: int64</div>
+<div class="param">sentence_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーのペンネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーアイコン画像のurl </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するGood評価の数 </div>
+<div class="param">evaluation_stay_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するStay評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 投稿日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 修正日時 format: date-time</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
