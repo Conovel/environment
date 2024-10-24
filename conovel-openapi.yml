@@ -33,14 +33,35 @@ components:
       properties:
         sentence_id:
           type: integer
+          format: int64
+          description: "投稿の一意のid（この値は他の投稿と重複しない必要があります）"
         sentence:
           type: string
+          description: "投稿の本文テキスト"
+        sentence_user_id:
+          type: integer
+          format: int64
+          description: "投稿の親投稿のid"
+        sentence_user_name:
+          type: string
+          description: "投稿ユーザーのペンネーム"
+        profile_icon_image:
+          type: string
+          description: "投稿ユーザーアイコン画像のurl"
+        evaluation_good_count:
+          type: integer
+          description: "投稿に対するGood評価の数"
+        evaluation_stay_count:
+          type: integer
+          description: "投稿に対するStay評価の数"
         created_at:
           type: string
           format: date-time
+          description: "投稿日時"
         updated_at:
           type: string
           format: date-time
+          description: "修正日時"
     Sentences:
       type: array
       items:
@@ -50,3 +71,9 @@ components:
       properties:
         main:
           $ref: "#/components/schemas/Sentence"
+        parent:
+          $ref: "#/components/schemas/Sentence"
+        parentParallel:
+          $ref: "#/components/schemas/Sentences"
+        children:
+          $ref: "#/components/schemas/Sentences"

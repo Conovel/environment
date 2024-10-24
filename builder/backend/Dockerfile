@@ -18,4 +18,4 @@ WORKDIR /app
 COPY backend/Gemfile backend/Gemfile.lock ./
 RUN gem install bundler && bundle install
 COPY backend ./
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+# CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

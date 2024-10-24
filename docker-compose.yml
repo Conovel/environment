@@ -57,6 +57,7 @@ services:
       - .env
     volumes:
       - db_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
 
 networks:
   conovel-network:

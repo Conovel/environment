@@ -30,11 +30,14 @@ $ git submodule update --init --recursive
 
 Dockerコンテナを起動
 ```sh
+# フォアグラウンドで起動（ターミナルにログが表示される）
+$ docker-compose up
+
 # バックグラウンドで起動
 $ docker-compose up -d
 
-# フォアグラウンドで起動（ログが表示される）
-$ docker-compose up
+#  新しいイメージを使ってコンテナを再起動
+$ docker-compose up --build
 ```
 - フォアグランドで起動時は常にログが表示されます
 - フォアグランドで起動時はターミナルにコマンドを追記できないため、Cntrol + CでDockerを停止するか別のターミナルを開く必要があります
@@ -59,11 +62,13 @@ $ docker-compose down --remove-orphans
 ```
 - クリーンアップは大きな修正を行った時など
 
-Dockerコンテナのビルド
+Dockerイメージをビルド
 ```sh
 $ docker-compose build
+
+# キャッシュを使わずにビルド
+$ docker-compose build --no-cache
 ```
-- クリーンアップを行った後に実行
 
 ログの出力
 ```sh
@@ -131,7 +136,14 @@ mysql> USE myapp_development;
 ```sh
 mysql> DESCRIBE テーブル名;
 ```
-テーブルの構成（カラム一覧）が表示される
+- テーブルの構成（カラム一覧）が表示される
+
+
+テーブルの作成に使用されたSQL文を表示
+```sh
+mysql> SHOW CREATE TABLE テーブル名;
+```
+- FK設定の処理などが確認できる
 
 ### シードデータの再実行
 シードデータを修正した際は、下記のコマンドでシードデータを再度実行します
@@ -178,7 +190,7 @@ PROJECT_ROOT=/Users/hoge/Documents/fuga/conovel/environment
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g html -o /local/openapigen
 ```
 
-もし上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
 ```sh
 export $(grep -v '^#' .env | xargs)
 ```
@@ -192,6 +204,11 @@ export $(grep -v '^#' .env | xargs)
 下記のコマンドを実行するとファイルが生成されます
 ```sh
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g ruby-on-rails -o /local/backend/openapigen
+```
+
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
 ```
 
 #### API関連ファイル
@@ -258,6 +275,11 @@ end
 下記のコマンドを実行するとファイルが生成されます
 ```sh
 docker run --rm -v ${PROJECT_ROOT}:/local openapitools/openapi-generator-cli generate -i /local/conovel-openapi.yml -g typescript-axios -o /local/frontend/openapigen
+```
+
+上記のコマンドが環境変数の設定に失敗する場合、以下のコマンドを実行してシェルセッションに環境変数を設定してください。
+```sh
+export $(grep -v '^#' .env | xargs)
 ```
 
 #### API関連ファイル
