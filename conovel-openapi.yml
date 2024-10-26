@@ -1,69 +1,79 @@
-openapi: "3.0.0"
+openapi: 3.0.0
 info:
+  title: Conovel API
   version: 1.0.0
-  title: Swagger Petstore
-  license:
-    name: MIT
 servers:
   - url: /v1
 paths:
-  /pets:
+  /sentences/{sentence_id}:
     get:
-      summary: List all pets
-      operationId: listPets
       tags:
-        - pets
+        - sentences
+      operationId: getSentenceById
+      summary: Get a sentence by ID
       parameters:
-        - name: limit
-          in: query
-          description: How many items to return at one time (max 100)
-          required: false
+        - name: sentence_id
+          in: path
+          required: true
           schema:
             type: integer
-            format: int32
       responses:
         '200':
-          description: A paged array of pets
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
+          description: A single sentence
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ViewSentence"
+        '404':
+          description: Sentence not found
 components:
   schemas:
-    Pet:
-      required:
-        - id
-        - name
+    Sentence:
+      type: object
       properties:
-        id:
+        sentence_id:
           type: integer
           format: int64
-        name:
+          description: "投稿の一意のid（この値は他の投稿と重複しない必要があります）"
+        sentence:
           type: string
-        tag:
+          description: "投稿の本文テキスト"
+        sentence_user_id:
+          type: integer
+          format: int64
+          description: "投稿の親投稿のid"
+        sentence_user_name:
           type: string
-    Pets:
+          description: "投稿ユーザーのペンネーム"
+        profile_icon_image:
+          type: string
+          description: "投稿ユーザーアイコン画像のurl"
+        evaluation_good_count:
+          type: integer
+          description: "投稿に対するGood評価の数"
+        evaluation_stay_count:
+          type: integer
+          description: "投稿に対するStay評価の数"
+        created_at:
+          type: string
+          format: date-time
+          description: "投稿日時"
+        updated_at:
+          type: string
+          format: date-time
+          description: "修正日時"
+    Sentences:
       type: array
       items:
-        $ref: "#/components/schemas/Pet"
-    Error:
-      required:
-        - code
-        - message
+        $ref: "#/components/schemas/Sentence"
+    ViewSentence:
+      type: object
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+        main:
+          $ref: "#/components/schemas/Sentence"
+        parent:
+          $ref: "#/components/schemas/Sentence"
+        parentParallel:
+          $ref: "#/components/schemas/Sentences"
+        children:
+          $ref: "#/components/schemas/Sentences"
