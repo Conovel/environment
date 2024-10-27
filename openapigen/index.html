@@ -197,6 +197,7 @@ font-style: italic;
   <h4><a href="#Sentences">Sentences</a></h4>
   <ul>
   <li><a href="#getSentenceById"><code><span class="http-method">get</span> /sentences/{sentence_id}</code></a></li>
+  <li><a href="#postSentence"><code><span class="http-method">post</span> /sentences/{sentence_id}</code></a></li>
   </ul>
 
   <h1><a name="Sentences">Sentences</a></h1>
@@ -312,23 +313,158 @@ font-style: italic;
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="postSentence"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /sentences/{sentence_id}</code></pre></div>
+    <div class="method-summary">投稿IDの続きの新規投稿を作成 (<span class="nickname">postSentence</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">sentence_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">PostSentence <a href="#PostSentence">PostSentence</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ViewSentence">ViewSentence</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "parentParallel" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ],
+  "parent" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "children" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ],
+  "main" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    投稿が作成されました
+        <a href="#ViewSentence">ViewSentence</a>
+    <h4 class="field-label">400</h4>
+    投稿に失敗しました
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
 
   <h2><a name="__Models">Models</a></h2>
   [ Jump to <a href="#__Methods">Methods</a> ]
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
     <li><a href="#Sentence"><code>Sentence</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="PostSentence"><code>PostSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">parent_sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のid format: int64</div>
+<div class="param">parent_sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のユーザーid format: int64</div>
+<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 新投稿のユーザーid format: int64</div>
+<div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="Sentence"><code>Sentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の一意のid（この値は他の投稿と重複しない必要があります） format: int64</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿の本文テキスト </div>
-<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の親投稿のid format: int64</div>
+<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿ユーザーのid format: int64</div>
 <div class="param">sentence_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーのペンネーム </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーアイコン画像のurl </div>
 <div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するGood評価の数 </div>

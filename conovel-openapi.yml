@@ -26,6 +26,32 @@ paths:
                 $ref: "#/components/schemas/ViewSentence"
         '404':
           description: "投稿が見つかりません"
+    post:
+      tags:
+        - sentences
+      operationId: postSentence
+      summary: "投稿IDの続きの新規投稿を作成"
+      parameters:
+        - name: sentence_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostSentence"
+      responses:
+        '201':
+          description: "投稿が作成されました"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
+        '400':
+          description: "投稿に失敗しました"
 components:
   schemas:
     Sentence:
@@ -41,7 +67,7 @@ components:
         sentence_user_id:
           type: integer
           format: int64
-          description: "投稿の親投稿のid"
+          description: "投稿ユーザーのid"
         sentence_user_name:
           type: string
           description: "投稿ユーザーのペンネーム"
@@ -77,3 +103,21 @@ components:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
+    PostSentence:
+      type: object
+      properties:
+        parent_sentence_id:
+          type: integer
+          format: int64
+          description: "親投稿のid"
+        parent_sentence_user_id:
+          type: integer
+          format: int64
+          description: "親投稿のユーザーid"
+        sentence_user_id:
+          type: integer
+          format: int64
+          description: "新投稿のユーザーid"
+        sentence:
+          type: string
+          description: "新投稿の本文テキスト"
