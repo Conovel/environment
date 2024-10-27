@@ -10,7 +10,7 @@ paths:
       tags:
         - sentences
       operationId: getSentenceById
-      summary: Get a sentence by ID
+      summary: "IDで投稿を取得"
       parameters:
         - name: sentence_id
           in: path
@@ -19,13 +19,13 @@ paths:
             type: integer
       responses:
         '200':
-          description: A single sentence
+          description: "投稿IDで取得した投稿および関連投稿"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ViewSentence"
         '404':
-          description: Sentence not found
+          description: "投稿が見つかりません"
 components:
   schemas:
     Sentence:
