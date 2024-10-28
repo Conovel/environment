@@ -25,7 +25,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ViewSentence"
         '404':
-          description: "投稿が見つかりません"
+          description: "投稿が見つからない"
     post:
       tags:
         - sentences
@@ -37,6 +37,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       requestBody:
         required: true
         content:
@@ -45,13 +46,41 @@ paths:
               $ref: "#/components/schemas/PostSentence"
       responses:
         '201':
-          description: "投稿が作成されました"
+          description: "新規投稿の追加に成功"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ViewSentence"
         '400':
-          description: "投稿に失敗しました"
+          description: "新規投稿の追加に失敗"
+  /evaluations/{sentence_id}:
+    post:
+      tags:
+        - evaluations
+      operationId: evaluateSentence
+      summary: "投稿に対する評価を追加"
+      parameters:
+        - name: sentence_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EvaluateSentence"
+      responses:
+        '201':
+          description: "評価の追加に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewEvaluation"
+        '400':
+          description: "評価の追加に失敗"
 components:
   schemas:
     Sentence:
@@ -121,3 +150,33 @@ components:
         sentence:
           type: string
           description: "新投稿の本文テキスト"
+    EvaluateSentence:
+      type: object
+      properties:
+        sentence_id:
+          type: integer
+          format: int64
+          description: "評価対象の投稿のID"
+        evaluator_user_id:
+          type: integer
+          format: int64
+          description: "評価を行ったユーザーのID"
+        evaluation:
+          type: string
+          enum: [good, bad, stay]
+          description: "評価の種類"
+    ViewEvaluation:
+      type: object
+      properties:
+        sentence_id:
+          type: integer
+          format: int64
+          description: "評価対象の投稿のID"
+        evaluation_good_count:
+          type: integer
+          format: int64
+          description: "Good評価の数"
+        evaluation_stay_count:
+          type: integer
+          format: int64
+          description: "Stay評価の数"
