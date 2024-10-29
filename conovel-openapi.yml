@@ -81,6 +81,40 @@ paths:
                 $ref: "#/components/schemas/ViewEvaluation"
         '400':
           description: "評価の追加に失敗"
+  /novels/:
+    get:
+      tags:
+        - novels
+      operationId: getNovels
+      summary: "小説一覧を取得"
+      responses:
+        '200':
+          description: "小説一覧"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Novels"
+  /novels/{title_id}:
+    get:
+      tags:
+        - novels
+      operationId: getNovelById
+      summary: "IDで小説の概要を取得"
+      parameters:
+        - name: title_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "小説IDで取得した小説"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NovelOverview"
+        '404':
+          description: "小説が見つからない"
 components:
   schemas:
     Sentence:
@@ -180,3 +214,69 @@ components:
           type: integer
           format: int64
           description: "Stay評価の数"
+    Novel:
+      type: object
+      properties:
+        title_id:
+          type: integer
+          format: int64
+          description: "小説の一意のid（この値は他の小説と重複しない必要があります）"
+        title:
+          type: string
+          description: "小説のタイトル"
+        main_copy:
+          type: string
+          description: "小説の紹介文"
+        author_user_id:
+          type: integer
+          format: int64
+          description: "小説の作者のid"
+        author_user_name:
+          type: string
+          description: "小説の作者のペンネーム"
+        profile_icon_image:
+          type: string
+          description: "小説の作者のアイコン画像のurl"
+        title_genres:
+          type: array
+          items:
+            type: string
+          description: "小説のジャンル"
+        is_new:
+          type: boolean
+          description: "新着小説かどうか"
+        is_famous:
+          type: boolean
+          description: "人気小説かどうか"
+        view_count:
+          type: integer
+          description: "小説の閲覧数"
+        created_at:
+          type: string
+          format: date-time
+          description: "小説の作成日時"
+        updated_at:
+          type: string
+          format: date-time
+          description: "小説の修正日時"
+    Novels:
+      type: array
+      items:
+        $ref: "#/components/schemas/Novel"
+    NovelOverview:
+      allOf:
+        - $ref: "#/components/schemas/Novel"
+        - type: object
+          properties:
+            sentence_user_count:
+              type: integer
+              description: "小説に投稿された投稿の数"
+            sentence_hierarchy_count:
+              type: integer
+              description: "小説に投稿された投稿の階層数"
+            reader_count:
+              type: integer
+              description: "小説を読んだユーザーの数"
+            overview:
+              type: string
+              description: "小説の概要"
