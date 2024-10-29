@@ -136,6 +136,44 @@ paths:
                 $ref: "#/components/schemas/RegisterUserResult"
         '400':
           description: "ユーザー登録に失敗"
+  /auth/login:
+    post:
+      tags:
+        - auth
+      operationId: logIn
+      summary: "Google OAuthによるログイン"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        '200':
+          description: "ログイン成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        '401':
+          description: "認証失敗"
+  /auth/logout:
+    post:
+      tags:
+        - auth
+      operationId: logOut
+      summary: "ログアウト"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogoutRequest"
+      responses:
+        '200':
+          description: "ログアウト成功"
+        '401':
+          description: "認証失敗"
 components:
   schemas:
     Sentence:
@@ -325,3 +363,29 @@ components:
               type: string
               format: date-time
               description: "ユーザーの作成日時"
+    LoginRequest:
+      type: object
+      properties:
+        google_token:
+          type: string
+          description: "Google OAuthのトークン"
+      required:
+        - google_token
+    LoginResponse:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          description: "ユーザーの一意のID"
+        access_token:
+          type: string
+          description: "アクセストークン"
+    LogoutRequest:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: "アクセストークン"
+      required:
+        - access_token

@@ -194,6 +194,11 @@ font-style: italic;
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
+  <h4><a href="#Auth">Auth</a></h4>
+  <ul>
+  <li><a href="#logIn"><code><span class="http-method">post</span> /auth/login</code></a></li>
+  <li><a href="#logOut"><code><span class="http-method">post</span> /auth/logout</code></a></li>
+  </ul>
   <h4><a href="#Evaluations">Evaluations</a></h4>
   <ul>
   <li><a href="#evaluateSentence"><code><span class="http-method">post</span> /evaluations/{sentence_id}</code></a></li>
@@ -213,6 +218,102 @@ font-style: italic;
   <li><a href="#registerUser"><code><span class="http-method">post</span> /users/</code></a></li>
   </ul>
 
+  <h1><a name="Auth">Auth</a></h1>
+  <div class="method"><a name="logIn"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/login</code></pre></div>
+    <div class="method-summary">Google OAuthによるログイン (<span class="nickname">logIn</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">LoginRequest <a href="#LoginRequest">LoginRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#LoginResponse">LoginResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "access_token" : "access_token",
+  "user_id" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ログイン成功
+        <a href="#LoginResponse">LoginResponse</a>
+    <h4 class="field-label">401</h4>
+    認証失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="logOut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/logout</code></pre></div>
+    <div class="method-summary">ログアウト (<span class="nickname">logOut</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">LogoutRequest <a href="#LogoutRequest">LogoutRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ログアウト成功
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    認証失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Evaluations">Evaluations</a></h1>
   <div class="method"><a name="evaluateSentence"/>
     <div class="method-path">
@@ -709,6 +810,9 @@ font-style: italic;
   <h3>Table of Contents</h3>
   <ol>
     <li><a href="#EvaluateSentence"><code>EvaluateSentence</code> - </a></li>
+    <li><a href="#LoginRequest"><code>LoginRequest</code> - </a></li>
+    <li><a href="#LoginResponse"><code>LoginResponse</code> - </a></li>
+    <li><a href="#LogoutRequest"><code>LogoutRequest</code> - </a></li>
     <li><a href="#Novel"><code>Novel</code> - </a></li>
     <li><a href="#NovelOverview"><code>NovelOverview</code> - </a></li>
     <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
@@ -728,6 +832,28 @@ font-style: italic;
 <div class="param">evaluation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 評価の種類 </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">good</div><div class="param-enum">bad</div><div class="param-enum">stay</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="LoginRequest"><code>LoginRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">google_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Google OAuthのトークン </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="LoginResponse"><code>LoginResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のID format: int64</div>
+<div class="param">access_token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> アクセストークン </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="LogoutRequest"><code>LogoutRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> アクセストークン </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
