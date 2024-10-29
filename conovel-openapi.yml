@@ -283,9 +283,9 @@ components:
         title:
           type: string
           description: "小説のタイトル"
-        main_copy:
+        famous_sentence_text:
           type: string
-          description: "小説の紹介文"
+          description: "名言・印象に残るシーン"
         author_user_id:
           type: integer
           format: int64
@@ -327,6 +327,9 @@ components:
         - $ref: "#/components/schemas/Novel"
         - type: object
           properties:
+            main_copy:
+              type: string
+              description: "小説の紹介文"
             sentence_user_count:
               type: integer
               description: "小説に投稿された投稿の数"

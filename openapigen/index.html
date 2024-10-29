@@ -416,6 +416,7 @@ font-style: italic;
   "created_at" : "2000-01-23T04:56:07.000+00:00",
   "title" : "title",
   "sentence_user_count" : 5,
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
@@ -475,10 +476,10 @@ font-style: italic;
   "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
   "title_genres" : [ "title_genres", "title_genres" ],
-  "main_copy" : "main_copy",
   "created_at" : "2000-01-23T04:56:07.000+00:00",
   "title" : "title",
-  "view_count" : 1
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
 }, {
   "is_famous" : true,
   "author_user_name" : "author_user_name",
@@ -488,10 +489,10 @@ font-style: italic;
   "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
   "title_genres" : [ "title_genres", "title_genres" ],
-  "main_copy" : "main_copy",
   "created_at" : "2000-01-23T04:56:07.000+00:00",
   "title" : "title",
-  "view_count" : 1
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -862,7 +863,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
 <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
-<div class="param">main_copy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の紹介文 </div>
+<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
 <div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
 <div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
@@ -880,7 +881,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
 <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
-<div class="param">main_copy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の紹介文 </div>
+<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
 <div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
 <div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
@@ -890,6 +891,7 @@ font-style: italic;
 <div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
+<div class="param">main_copy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の紹介文 </div>
 <div class="param">sentence_user_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の数 </div>
 <div class="param">sentence_hierarchy_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の階層数 </div>
 <div class="param">reader_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説を読んだユーザーの数 </div>
