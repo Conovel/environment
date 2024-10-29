@@ -115,6 +115,27 @@ paths:
                 $ref: "#/components/schemas/NovelOverview"
         '404':
           description: "小説が見つからない"
+  /users/:
+    post:
+      tags:
+        - users
+      operationId: registerUser
+      summary: "ユーザー登録"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterUser"
+      responses:
+        '201':
+          description: "ユーザー登録に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterUserResult"
+        '400':
+          description: "ユーザー登録に失敗"
 components:
   schemas:
     Sentence:
@@ -280,3 +301,27 @@ components:
             overview:
               type: string
               description: "小説の概要"
+    RegisterUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: "ユーザーのメールアドレス"
+        google_sub:
+          type: string
+          maxLength: 128
+          description: "Googleのサブジェクト識別子"
+    RegisterUserResult:
+      allOf:
+        - $ref: "#/components/schemas/RegisterUser"
+        - type: object
+          properties:
+            user_id:
+              type: integer
+              format: int64
+              description: "ユーザーの一意のid"
+            created_at:
+              type: string
+              format: date-time
+              description: "ユーザーの作成日時"

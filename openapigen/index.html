@@ -208,6 +208,10 @@ font-style: italic;
   <li><a href="#getSentenceById"><code><span class="http-method">get</span> /sentences/{sentence_id}</code></a></li>
   <li><a href="#postSentence"><code><span class="http-method">post</span> /sentences/{sentence_id}</code></a></li>
   </ul>
+  <h4><a href="#Users">Users</a></h4>
+  <ul>
+  <li><a href="#registerUser"><code><span class="http-method">post</span> /users/</code></a></li>
+  </ul>
 
   <h1><a name="Evaluations">Evaluations</a></h1>
   <div class="method"><a name="evaluateSentence"/>
@@ -639,6 +643,65 @@ font-style: italic;
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
+  <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="registerUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/</code></pre></div>
+    <div class="method-summary">ユーザー登録 (<span class="nickname">registerUser</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">RegisterUser <a href="#RegisterUser">RegisterUser</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RegisterUserResult">RegisterUserResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "user_id" : 0,
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "email" : "email",
+  "google_sub" : "google_sub"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    ユーザー登録に成功
+        <a href="#RegisterUserResult">RegisterUserResult</a>
+    <h4 class="field-label">400</h4>
+    ユーザー登録に失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
 
   <h2><a name="__Models">Models</a></h2>
   [ Jump to <a href="#__Methods">Methods</a> ]
@@ -649,6 +712,8 @@ font-style: italic;
     <li><a href="#Novel"><code>Novel</code> - </a></li>
     <li><a href="#NovelOverview"><code>NovelOverview</code> - </a></li>
     <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
+    <li><a href="#RegisterUser"><code>RegisterUser</code> - </a></li>
+    <li><a href="#RegisterUserResult"><code>RegisterUserResult</code> - </a></li>
     <li><a href="#Sentence"><code>Sentence</code> - </a></li>
     <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
@@ -713,6 +778,24 @@ font-style: italic;
 <div class="param">parent_sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のユーザーid format: int64</div>
 <div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 新投稿のユーザーid format: int64</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RegisterUser"><code>RegisterUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのメールアドレス format: email</div>
+<div class="param">google_sub (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Googleのサブジェクト識別子 </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RegisterUserResult"><code>RegisterUserResult</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのメールアドレス format: email</div>
+<div class="param">google_sub (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Googleのサブジェクト識別子 </div>
+<div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
