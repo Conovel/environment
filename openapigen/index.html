@@ -215,6 +215,7 @@ font-style: italic;
   </ul>
   <h4><a href="#Users">Users</a></h4>
   <ul>
+  <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
   <li><a href="#registerUser"><code><span class="http-method">post</span> /users/</code></a></li>
   </ul>
 
@@ -223,7 +224,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/login</code></pre></div>
-    <div class="method-summary">Google OAuthによるログイン (<span class="nickname">logIn</span>)</div>
+    <div class="method-summary">ログイン (<span class="nickname">logIn</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -437,7 +438,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    小説IDで取得した小説
+    小説IDで取得した小説の概要
         <a href="#NovelOverview">NovelOverview</a>
     <h4 class="field-label">404</h4>
     小説が見つからない
@@ -746,6 +747,63 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="getUserById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}</code></pre></div>
+    <div class="method-summary">IDでユーザーアカウント情報を取得 (<span class="nickname">getUserById</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#User">User</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "good_count" : 6,
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "user_id" : 0,
+  "user_name" : "user_name",
+  "is_anonymous" : true,
+  "nick_name" : "nick_name",
+  "birth_year_and_month" : "birth_year_and_month",
+  "profile_icon_image" : "profile_icon_image",
+  "created_at" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーIDで取得したユーザーアカウント情報
+        <a href="#User">User</a>
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="registerUser"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -820,6 +878,7 @@ font-style: italic;
     <li><a href="#RegisterUser"><code>RegisterUser</code> - </a></li>
     <li><a href="#RegisterUserResult"><code>RegisterUserResult</code> - </a></li>
     <li><a href="#Sentence"><code>Sentence</code> - </a></li>
+    <li><a href="#User"><code>User</code> - </a></li>
     <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
   </ol>
@@ -939,6 +998,21 @@ font-style: italic;
 <div class="param">evaluation_stay_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するStay評価の数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 投稿日時 format: date-time</div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 修正日時 format: date-time</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="User"><code>User</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
+<div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
+<div class="param">birth_year_and_month (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
+<div class="param">is_anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
+<div class="param">good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

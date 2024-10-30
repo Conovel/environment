@@ -108,7 +108,7 @@ paths:
             type: integer
       responses:
         '200':
-          description: "小説IDで取得した小説"
+          description: "小説IDで取得した小説の概要"
           content:
             application/json:
               schema:
@@ -136,12 +136,33 @@ paths:
                 $ref: "#/components/schemas/RegisterUserResult"
         '400':
           description: "ユーザー登録に失敗"
+  /users/{user_id}:
+    get:
+      tags:
+        - users
+      operationId: getUserById
+      summary: "IDでユーザーアカウント情報を取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーアカウント情報"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: "ユーザーが見つからない"
   /auth/login:
     post:
       tags:
         - auth
       operationId: logIn
-      summary: "Google OAuthによるログイン"
+      summary: "ログイン"
       requestBody:
         required: true
         content:
@@ -392,3 +413,36 @@ components:
           description: "アクセストークン"
       required:
         - access_token
+    User:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          description: "ユーザーの一意のid"
+        user_name:
+          type: string
+          description: "ユーザーのペンネーム"
+        nick_name:
+          type: string
+          description: "ユーザーのニックネーム"
+        birth_year_and_month:
+          type: string
+          description: "ユーザーの生年月（YYYY/MM）"
+        is_anonymous:
+          type: boolean
+          description: "匿名設定"
+        profile_icon_image:
+          type: string
+          description: "ユーザーアイコン画像のurl"
+        good_count:
+          type: integer
+          description: "Good評価の数"
+        created_at:
+          type: string
+          format: date-time
+          description: "ユーザーの作成日時"
+        updated_at:
+          type: string
+          format: date-time
+          description: "ユーザーの修正日時"
