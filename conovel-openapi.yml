@@ -183,6 +183,48 @@ paths:
                 $ref: "#/components/schemas/User"
         '400':
           description: "ユーザー情報の更新に失敗"
+  /users/{user_id}/posted-novels:
+    get:
+      tags:
+        - users
+      operationId: getNovelsByUserId
+      summary: "ユーザーが投稿している小説一覧を取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーが投稿している小説一覧"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Novels"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/{user_id}/viewed-novels:
+    get:
+      tags:
+        - users
+      operationId: getViewedNovelsByUserId
+      summary: "ユーザーが閲覧している小説一覧を取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーが閲覧している小説一覧"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Novels"
+        '404':
+          description: "ユーザーが見つからない"
   /auth/login:
     post:
       tags:

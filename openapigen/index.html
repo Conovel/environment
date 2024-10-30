@@ -215,7 +215,9 @@ font-style: italic;
   </ul>
   <h4><a href="#Users">Users</a></h4>
   <ul>
+  <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted-novels</code></a></li>
   <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
+  <li><a href="#getViewedNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/viewed-novels</code></a></li>
   <li><a href="#registerUser"><code><span class="http-method">post</span> /users/</code></a></li>
   <li><a href="#updateUserById"><code><span class="http-method">post</span> /users/{user_id}</code></a></li>
   </ul>
@@ -748,6 +750,79 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="getNovelsByUserId"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/posted-novels</code></pre></div>
+    <div class="method-summary">ユーザーが投稿している小説一覧を取得 (<span class="nickname">getNovelsByUserId</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Novel">Novel</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "is_new" : true,
+  "title_id" : 0,
+  "profile_icon_image" : "profile_icon_image",
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
+}, {
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "is_new" : true,
+  "title_id" : 0,
+  "profile_icon_image" : "profile_icon_image",
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーIDで取得したユーザーが投稿している小説一覧
+        
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="getUserById"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -800,6 +875,79 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     ユーザーIDで取得したユーザーアカウント情報
         <a href="#User">User</a>
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getViewedNovelsByUserId"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/viewed-novels</code></pre></div>
+    <div class="method-summary">ユーザーが閲覧している小説一覧を取得 (<span class="nickname">getViewedNovelsByUserId</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Novel">Novel</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "is_new" : true,
+  "title_id" : 0,
+  "profile_icon_image" : "profile_icon_image",
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
+}, {
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "is_new" : true,
+  "title_id" : 0,
+  "profile_icon_image" : "profile_icon_image",
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "view_count" : 1,
+  "famous_sentence_text" : "famous_sentence_text"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーIDで取得したユーザーが閲覧している小説一覧
+        
     <h4 class="field-label">404</h4>
     ユーザーが見つからない
         <a href="#"></a>
