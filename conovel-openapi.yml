@@ -157,6 +157,32 @@ paths:
                 $ref: "#/components/schemas/User"
         '404':
           description: "ユーザーが見つからない"
+    post: # 部分更新にはpatchの方が適切かも（要検討）
+      tags:
+        - users
+      operationId: updateUserById
+      summary: "IDでユーザーアカウント情報を更新"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        '200':
+          description: "ユーザー情報の更新に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: "ユーザー情報の更新に失敗"
   /auth/login:
     post:
       tags:
@@ -446,3 +472,18 @@ components:
           type: string
           format: date-time
           description: "ユーザーの修正日時"
+    UpdateUser:
+      type: object
+      properties:
+        user_name:
+          type: string
+          description: "ユーザーのペンネーム"
+        nick_name:
+          type: string
+          description: "ユーザーのニックネーム"
+        is_anonymous:
+          type: boolean
+          description: "匿名設定"
+        profile_icon_image: #追加
+          type: string
+          description: "ユーザーアイコン画像のurl"
