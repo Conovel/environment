@@ -215,6 +215,7 @@ font-style: italic;
   </ul>
   <h4><a href="#Users">Users</a></h4>
   <ul>
+  <li><a href="#deleteUserById"><code><span class="http-method">delete</span> /users/{user_id}</code></a></li>
   <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted-novels</code></a></li>
   <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
   <li><a href="#getViewedNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/viewed-novels</code></a></li>
@@ -750,6 +751,51 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="deleteUserById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /users/{user_id}</code></pre></div>
+    <div class="method-summary">IDでユーザーアカウントを削除 (<span class="nickname">deleteUserById</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">DeleteUser <a href="#DeleteUser">DeleteUser</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーの削除に成功
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    ユーザーの削除に失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="getNovelsByUserId"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1086,6 +1132,7 @@ font-style: italic;
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#DeleteUser"><code>DeleteUser</code> - </a></li>
     <li><a href="#EvaluateSentence"><code>EvaluateSentence</code> - </a></li>
     <li><a href="#LoginRequest"><code>LoginRequest</code> - </a></li>
     <li><a href="#LoginResponse"><code>LoginResponse</code> - </a></li>
@@ -1102,6 +1149,13 @@ font-style: italic;
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="DeleteUser"><code>DeleteUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> アクセストークン </div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="EvaluateSentence"><code>EvaluateSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>

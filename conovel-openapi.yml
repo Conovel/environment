@@ -183,6 +183,28 @@ paths:
                 $ref: "#/components/schemas/User"
         '400':
           description: "ユーザー情報の更新に失敗"
+    delete:
+      tags:
+        - users
+      operationId: deleteUserById
+      summary: "IDでユーザーアカウントを削除"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteUser"
+      responses:
+        '200':
+          description: "ユーザーの削除に成功"
+        '400':
+          description: "ユーザーの削除に失敗"
   /users/{user_id}/posted-novels:
     get:
       tags:
@@ -529,3 +551,12 @@ components:
         profile_icon_image: #追加
           type: string
           description: "ユーザーアイコン画像のurl"
+    DeleteUser:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: "アクセストークン"
+      required:
+        - user_id
+        - access_token
