@@ -73,14 +73,14 @@ paths:
       tags:
         - novels
       operationId: getNovels
-      summary: "小説一覧を取得"
+      summary: "小説リストを取得"
       responses:
         '200':
-          description: "直近で後続の投稿があったものを先頭にした小説一覧"
+          description: "直近で後続の投稿があったものを先頭にした小説リスト"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Novels"
+                $ref: "#/components/schemas/NovelList"
   /novels/{title_id}:
     get:
       tags:
@@ -95,11 +95,11 @@ paths:
             type: integer
       responses:
         '200':
-          description: "小説IDで取得した小説の概要"
+          description: "小説IDで取得した各小説の概要"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NovelOverview"
+                $ref: "#/components/schemas/NovelDetail"
         '404':
           description: "小説が見つからない"
   /users: # 不要なAPI？（調査中）
@@ -188,7 +188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Novels"
+                $ref: "#/components/schemas/NovelList"
         '404':
           description: "ユーザーが見つからない"
   /users/{user_id}:
@@ -217,7 +217,7 @@ paths:
       tags:
         - users
       operationId: getNovelsByUserId
-      summary: "ユーザーが投稿している小説一覧を取得"
+      summary: "ユーザーが投稿している小説リストを取得"
       parameters:
         - name: user_id
           in: path
@@ -226,11 +226,11 @@ paths:
             type: integer
       responses:
         '200':
-          description: "ユーザーIDで取得したユーザーが投稿している小説一覧"
+          description: "ユーザーIDで取得したユーザーが投稿している小説リスト"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Novels"
+                $ref: "#/components/schemas/NovelList"
         '404':
           description: "ユーザーが見つからない"
   /auth/login: # 不要なAPI？（調査中）
@@ -358,7 +358,7 @@ components:
           type: integer
           format: int64
           description: "Stay評価の数"
-    Novel:
+    NovelListItem:
       type: object
       properties:
         title_id:
@@ -406,13 +406,13 @@ components:
           type: string
           format: date-time
           description: "小説の修正日時"
-    Novels:
+    NovelList:
       type: array
       items:
-        $ref: "#/components/schemas/Novel"
-    NovelOverview:
+        $ref: "#/components/schemas/NovelListItem"
+    NovelDetail:
       allOf:
-        - $ref: "#/components/schemas/Novel"
+        - $ref: "#/components/schemas/NovelListItem"
         - type: object
           properties:
             main_copy:
@@ -429,7 +429,7 @@ components:
               description: "小説を読んだユーザーの数"
             overview:
               type: string
-              description: "小説の概要"
+              description: "小説のあらすじ"
     RegisterUser:
       type: object
       properties:

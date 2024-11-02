@@ -328,12 +328,6 @@ font-style: italic;
     <div class="method-summary">投稿に対する評価を追加 (<span class="nickname">evaluateSentence</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sentence_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null format: int64</div>
-    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -406,7 +400,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#NovelOverview">NovelOverview</a>
+      <a href="#NovelDetail">NovelDetail</a>
       
     </div>
 
@@ -427,10 +421,11 @@ font-style: italic;
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "reader_count" : 2,
+  "reader_count" : 7,
   "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
   "main_copy" : "main_copy",
-  "sentence_hierarchy_count" : 5,
+  "sentence_hierarchy_count" : 2,
   "view_count" : 1
 }</code></pre>
 
@@ -443,8 +438,8 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    小説IDで取得した小説の概要
-        <a href="#NovelOverview">NovelOverview</a>
+    小説IDで取得した各小説の概要
+        <a href="#NovelDetail">NovelDetail</a>
     <h4 class="field-label">404</h4>
     小説が見つからない
         <a href="#"></a>
@@ -454,7 +449,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /novels</code></pre></div>
-    <div class="method-summary">小説一覧を取得 (<span class="nickname">getNovels</span>)</div>
+    <div class="method-summary">小説リストを取得 (<span class="nickname">getNovels</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -465,7 +460,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Novel">Novel</a>]
+      array[<a href="#NovelListItem">NovelListItem</a>]
       
     </div>
 
@@ -474,31 +469,33 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 }, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -510,7 +507,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    直近で後続の投稿があったものを先頭にした小説一覧
+    直近で後続の投稿があったものを先頭にした小説リスト
         
   </div> <!-- method -->
   <hr/>
@@ -634,12 +631,6 @@ font-style: italic;
     <div class="method-summary">メイン投稿の続きの新規投稿を作成 (<span class="nickname">postSentence</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sentence_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null format: int64</div>
-    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -759,12 +750,6 @@ font-style: italic;
     <div class="method-summary">自分自身のユーザーアカウントを削除（論理削除） (<span class="nickname">deleteUserByMe</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">user_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
-    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -801,7 +786,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/posted_novels</code></pre></div>
-    <div class="method-summary">ユーザーが投稿している小説一覧を取得 (<span class="nickname">getNovelsByUserId</span>)</div>
+    <div class="method-summary">ユーザーが投稿している小説リストを取得 (<span class="nickname">getNovelsByUserId</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -818,7 +803,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Novel">Novel</a>]
+      array[<a href="#NovelListItem">NovelListItem</a>]
       
     </div>
 
@@ -827,31 +812,33 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 }, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -863,7 +850,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    ユーザーIDで取得したユーザーが投稿している小説一覧
+    ユーザーIDで取得したユーザーが投稿している小説リスト
         
     <h4 class="field-label">404</h4>
     ユーザーが見つからない
@@ -900,12 +887,12 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "good_count" : 6,
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "user_id" : 0,
   "user_name" : "user_name",
   "nick_name" : "nick_name",
   "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
   "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
 
@@ -932,12 +919,6 @@ font-style: italic;
     <div class="method-summary">自分自身のユーザーアカウント情報を取得 (<span class="nickname">getUserByMe</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">user_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
-    </div>  <!-- field-items -->
 
 
 
@@ -955,7 +936,6 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "good_count" : 6,
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "user_id" : 0,
   "user_name" : "user_name",
@@ -963,6 +943,7 @@ font-style: italic;
   "nick_name" : "nick_name",
   "birth_year_and_month" : "birth_year_and_month",
   "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
   "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
 
@@ -989,12 +970,6 @@ font-style: italic;
     <div class="method-summary">自分自身が閲覧している小説一覧を取得 (<span class="nickname">getViewedNovelsByMe</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">user_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
-    </div>  <!-- field-items -->
 
 
 
@@ -1003,7 +978,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#Novel">Novel</a>]
+      array[<a href="#NovelListItem">NovelListItem</a>]
       
     </div>
 
@@ -1012,31 +987,33 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 }, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
   "is_famous" : true,
   "author_user_name" : "author_user_name",
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "author_user_id" : 6,
-  "is_new" : true,
-  "title_id" : 0,
   "profile_icon_image" : "profile_icon_image",
-  "title_genres" : [ "title_genres", "title_genres" ],
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "view_count" : 1,
-  "famous_sentence_text" : "famous_sentence_text"
+  "evaluation_good_count" : 5,
+  "view_count" : 1
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1120,12 +1097,6 @@ font-style: italic;
     <div class="method-summary">自分自身のユーザーアカウント情報を更新 (<span class="nickname">updateUserByMe</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">user_id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
-    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -1155,12 +1126,12 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "good_count" : 6,
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "user_id" : 0,
   "user_name" : "user_name",
   "nick_name" : "nick_name",
   "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
   "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
 
@@ -1191,8 +1162,8 @@ font-style: italic;
     <li><a href="#LoginRequest"><code>LoginRequest</code> - </a></li>
     <li><a href="#LoginResponse"><code>LoginResponse</code> - </a></li>
     <li><a href="#LogoutRequest"><code>LogoutRequest</code> - </a></li>
-    <li><a href="#Novel"><code>Novel</code> - </a></li>
-    <li><a href="#NovelOverview"><code>NovelOverview</code> - </a></li>
+    <li><a href="#NovelDetail"><code>NovelDetail</code> - </a></li>
+    <li><a href="#NovelListItem"><code>NovelListItem</code> - </a></li>
     <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
     <li><a href="#RegisterUser"><code>RegisterUser</code> - </a></li>
     <li><a href="#RegisterUserResult"><code>RegisterUserResult</code> - </a></li>
@@ -1244,7 +1215,7 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Novel"><code>Novel</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="NovelDetail"><code>NovelDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
@@ -1257,31 +1228,33 @@ font-style: italic;
 <div class="param">is_new (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
 <div class="param">is_famous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 人気小説かどうか </div>
 <div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
-<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
-<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="NovelOverview"><code>NovelOverview</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
-<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
-<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
-<div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
-<div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
-<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
-<div class="param">title_genres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
-<div class="param">is_new (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
-<div class="param">is_famous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 人気小説かどうか </div>
-<div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説のGood評価の数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
 <div class="param">main_copy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の紹介文 </div>
 <div class="param">sentence_user_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の数 </div>
 <div class="param">sentence_hierarchy_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の階層数 </div>
 <div class="param">reader_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説を読んだユーザーの数 </div>
-<div class="param">overview (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の概要 </div>
+<div class="param">overview (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のあらすじ </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="NovelListItem"><code>NovelListItem</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
+<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
+<div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
+<div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
+<div class="param">title_genres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
+<div class="param">is_new (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
+<div class="param">is_famous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 人気小説かどうか </div>
+<div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説のGood評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -1343,7 +1316,7 @@ font-style: italic;
 <div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
 <div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
-<div class="param">good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
     </div>  <!-- field-items -->
@@ -1365,7 +1338,7 @@ font-style: italic;
 <div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
 <div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
-<div class="param">good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
 <div class="param">birth_year_and_month (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
