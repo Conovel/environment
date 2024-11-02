@@ -5,6 +5,27 @@ info:
 servers:
   - url: /v1
 paths:
+  /sentences:
+    post:
+      tags:
+        - sentences
+      operationId: postSentence
+      summary: "メイン投稿の続きの新規投稿を作成"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostSentence"
+      responses:
+        '201':
+          description: "新規投稿の追加に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
+        '400':
+          description: "新規投稿の追加に失敗"
   /sentences/{sentence_id}:
     get:
       tags:
@@ -26,46 +47,12 @@ paths:
                 $ref: "#/components/schemas/ViewSentence"
         '404':
           description: "投稿が見つからない"
-    post:
-      tags:
-        - sentences
-      operationId: postSentence
-      summary: "投稿IDの続きの新規投稿を作成"
-      parameters:
-        - name: sentence_id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PostSentence"
-      responses:
-        '201':
-          description: "新規投稿の追加に成功"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ViewSentence"
-        '400':
-          description: "新規投稿の追加に失敗"
-  /evaluations/{sentence_id}:
+  /evaluations:
     post:
       tags:
         - evaluations
       operationId: evaluateSentence
       summary: "投稿に対する評価を追加"
-      parameters:
-        - name: sentence_id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
       requestBody:
         required: true
         content:
@@ -81,7 +68,7 @@ paths:
                 $ref: "#/components/schemas/ViewEvaluation"
         '400':
           description: "評価の追加に失敗"
-  /novels/:
+  /novels:
     get:
       tags:
         - novels
@@ -89,7 +76,7 @@ paths:
       summary: "小説一覧を取得"
       responses:
         '200':
-          description: "小説一覧"
+          description: "直近で後続の投稿があったものを先頭にした小説一覧"
           content:
             application/json:
               schema:
@@ -115,7 +102,7 @@ paths:
                 $ref: "#/components/schemas/NovelOverview"
         '404':
           description: "小説が見つからない"
-  /users/:
+  /users: # 不要なAPI？（調査中）
     post:
       tags:
         - users
@@ -136,38 +123,27 @@ paths:
                 $ref: "#/components/schemas/RegisterUserResult"
         '400':
           description: "ユーザー登録に失敗"
-  /users/{user_id}:
+  /users/me: # 他のユーザーに表示させたくない情報を含むためmeに変更
     get:
       tags:
         - users
-      operationId: getUserById
-      summary: "IDでユーザーアカウント情報を取得"
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: integer
+      operationId: getUserByMe
+      summary: "自分自身のユーザーアカウント情報を取得"
       responses:
         '200':
-          description: "ユーザーIDで取得したユーザーアカウント情報"
+          description: "自分自身のユーザーアカウント情報"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/ViewMeUser"
         '404':
           description: "ユーザーが見つからない"
-    post: # 部分更新にはpatchの方が適切かも（要検討）
+  /users/me/update: # 他のユーザーにアカウント更新させたくないためmeに変更
+    post:
       tags:
         - users
-      operationId: updateUserById
-      summary: "IDでユーザーアカウント情報を更新"
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: integer
+      operationId:  updateUserByMe
+      summary: "自分自身のユーザーアカウント情報を更新"
       requestBody:
         required: true
         content:
@@ -183,17 +159,12 @@ paths:
                 $ref: "#/components/schemas/User"
         '400':
           description: "ユーザー情報の更新に失敗"
-    delete:
+  /users/me/delete: # 他のユーザーにアカウント削除させたくないためmeに変更
+    post:
       tags:
         - users
-      operationId: deleteUserById
-      summary: "IDでユーザーアカウントを削除"
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: integer
+      operationId:  deleteUserByMe
+      summary: "自分自身のユーザーアカウントを削除（論理削除）"
       requestBody:
         required: true
         content:
@@ -205,7 +176,43 @@ paths:
           description: "ユーザーの削除に成功"
         '400':
           description: "ユーザーの削除に失敗"
-  /users/{user_id}/posted-novels:
+  /users/me/viewed_novels: # 他のユーザーに表示させたくない情報を含むためmeに変更
+    get:
+      tags:
+        - users
+      operationId: getViewedNovelsByMe
+      summary: "自分自身が閲覧している小説一覧を取得"
+      responses:
+        '200':
+          description: "自分自身が閲覧している小説一覧"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Novels"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/{user_id}:
+    get:
+      tags:
+        - users
+      operationId: getUserById
+      summary: "IDで自分以外のユーザーアカウント情報を取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーアカウント情報"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/{user_id}/posted_novels:
     get:
       tags:
         - users
@@ -226,28 +233,7 @@ paths:
                 $ref: "#/components/schemas/Novels"
         '404':
           description: "ユーザーが見つからない"
-  /users/{user_id}/viewed-novels:
-    get:
-      tags:
-        - users
-      operationId: getViewedNovelsByUserId
-      summary: "ユーザーが閲覧している小説一覧を取得"
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: "ユーザーIDで取得したユーザーが閲覧している小説一覧"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Novels"
-        '404':
-          description: "ユーザーが見つからない"
-  /auth/login:
+  /auth/login: # 不要なAPI？（調査中）
     post:
       tags:
         - auth
@@ -268,7 +254,7 @@ paths:
                 $ref: "#/components/schemas/LoginResponse"
         '401':
           description: "認証失敗"
-  /auth/logout:
+  /auth/logout: # 不要なAPI？（調査中）
     post:
       tags:
         - auth
@@ -343,14 +329,6 @@ components:
           type: integer
           format: int64
           description: "親投稿のid"
-        parent_sentence_user_id:
-          type: integer
-          format: int64
-          description: "親投稿のユーザーid"
-        sentence_user_id:
-          type: integer
-          format: int64
-          description: "新投稿のユーザーid"
         sentence:
           type: string
           description: "新投稿の本文テキスト"
@@ -361,10 +339,6 @@ components:
           type: integer
           format: int64
           description: "評価対象の投稿のID"
-        evaluator_user_id:
-          type: integer
-          format: int64
-          description: "評価を行ったユーザーのID"
         evaluation:
           type: string
           enum: [good, bad, stay]
@@ -412,15 +386,18 @@ components:
           items:
             type: string
           description: "小説のジャンル"
-        is_new:
+        is_new: # ブラウザ側で判定するなら不要？
           type: boolean
           description: "新着小説かどうか"
-        is_famous:
+        is_famous: # ブラウザ側で判定するなら不要？
           type: boolean
           description: "人気小説かどうか"
         view_count:
           type: integer
           description: "小説の閲覧数"
+        evaluation_good_count: # 追加（メダル数を表示しない代わりに）
+          type: integer
+          description: "小説のGood評価の数"
         created_at:
           type: string
           format: date-time
@@ -516,16 +493,10 @@ components:
         nick_name:
           type: string
           description: "ユーザーのニックネーム"
-        birth_year_and_month:
-          type: string
-          description: "ユーザーの生年月（YYYY/MM）"
-        is_anonymous:
-          type: boolean
-          description: "匿名設定"
         profile_icon_image:
           type: string
           description: "ユーザーアイコン画像のurl"
-        good_count:
+        evaluation_good_count:
           type: integer
           description: "Good評価の数"
         created_at:
@@ -536,6 +507,17 @@ components:
           type: string
           format: date-time
           description: "ユーザーの修正日時"
+    ViewMeUser:
+      allOf:
+        - $ref: "#/components/schemas/User"
+        - type: object
+          properties:
+            birth_year_and_month:
+              type: string
+              description: "ユーザーの生年月（YYYY/MM）"
+            is_anonymous:
+              type: boolean
+              description: "匿名設定"
     UpdateUser:
       type: object
       properties:

@@ -201,26 +201,27 @@ font-style: italic;
   </ul>
   <h4><a href="#Evaluations">Evaluations</a></h4>
   <ul>
-  <li><a href="#evaluateSentence"><code><span class="http-method">post</span> /evaluations/{sentence_id}</code></a></li>
+  <li><a href="#evaluateSentence"><code><span class="http-method">post</span> /evaluations</code></a></li>
   </ul>
   <h4><a href="#Novels">Novels</a></h4>
   <ul>
   <li><a href="#getNovelById"><code><span class="http-method">get</span> /novels/{title_id}</code></a></li>
-  <li><a href="#getNovels"><code><span class="http-method">get</span> /novels/</code></a></li>
+  <li><a href="#getNovels"><code><span class="http-method">get</span> /novels</code></a></li>
   </ul>
   <h4><a href="#Sentences">Sentences</a></h4>
   <ul>
   <li><a href="#getSentenceById"><code><span class="http-method">get</span> /sentences/{sentence_id}</code></a></li>
-  <li><a href="#postSentence"><code><span class="http-method">post</span> /sentences/{sentence_id}</code></a></li>
+  <li><a href="#postSentence"><code><span class="http-method">post</span> /sentences</code></a></li>
   </ul>
   <h4><a href="#Users">Users</a></h4>
   <ul>
-  <li><a href="#deleteUserById"><code><span class="http-method">delete</span> /users/{user_id}</code></a></li>
-  <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted-novels</code></a></li>
+  <li><a href="#deleteUserByMe"><code><span class="http-method">post</span> /users/me/delete</code></a></li>
+  <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted_novels</code></a></li>
   <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
-  <li><a href="#getViewedNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/viewed-novels</code></a></li>
-  <li><a href="#registerUser"><code><span class="http-method">post</span> /users/</code></a></li>
-  <li><a href="#updateUserById"><code><span class="http-method">post</span> /users/{user_id}</code></a></li>
+  <li><a href="#getUserByMe"><code><span class="http-method">get</span> /users/me</code></a></li>
+  <li><a href="#getViewedNovelsByMe"><code><span class="http-method">get</span> /users/me/viewed_novels</code></a></li>
+  <li><a href="#registerUser"><code><span class="http-method">post</span> /users</code></a></li>
+  <li><a href="#updateUserByMe"><code><span class="http-method">post</span> /users/me/update</code></a></li>
   </ul>
 
   <h1><a name="Auth">Auth</a></h1>
@@ -323,7 +324,7 @@ font-style: italic;
   <div class="method"><a name="evaluateSentence"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /evaluations/{sentence_id}</code></pre></div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /evaluations</code></pre></div>
     <div class="method-summary">投稿に対する評価を追加 (<span class="nickname">evaluateSentence</span>)</div>
     <div class="method-notes"></div>
 
@@ -452,7 +453,7 @@ font-style: italic;
   <div class="method"><a name="getNovels"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /novels/</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /novels</code></pre></div>
     <div class="method-summary">小説一覧を取得 (<span class="nickname">getNovels</span>)</div>
     <div class="method-notes"></div>
 
@@ -509,7 +510,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    小説一覧
+    直近で後続の投稿があったものを先頭にした小説一覧
         
   </div> <!-- method -->
   <hr/>
@@ -629,8 +630,8 @@ font-style: italic;
   <div class="method"><a name="postSentence"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /sentences/{sentence_id}</code></pre></div>
-    <div class="method-summary">投稿IDの続きの新規投稿を作成 (<span class="nickname">postSentence</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /sentences</code></pre></div>
+    <div class="method-summary">メイン投稿の続きの新規投稿を作成 (<span class="nickname">postSentence</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -751,11 +752,11 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
-  <div class="method"><a name="deleteUserById"/>
+  <div class="method"><a name="deleteUserByMe"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /users/{user_id}</code></pre></div>
-    <div class="method-summary">IDでユーザーアカウントを削除 (<span class="nickname">deleteUserById</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/me/delete</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウントを削除（論理削除） (<span class="nickname">deleteUserByMe</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -799,7 +800,7 @@ font-style: italic;
   <div class="method"><a name="getNovelsByUserId"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/posted-novels</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/posted_novels</code></pre></div>
     <div class="method-summary">ユーザーが投稿している小説一覧を取得 (<span class="nickname">getNovelsByUserId</span>)</div>
     <div class="method-notes"></div>
 
@@ -873,7 +874,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}</code></pre></div>
-    <div class="method-summary">IDでユーザーアカウント情報を取得 (<span class="nickname">getUserById</span>)</div>
+    <div class="method-summary">IDで自分以外のユーザーアカウント情報を取得 (<span class="nickname">getUserById</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -903,9 +904,7 @@ font-style: italic;
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "user_id" : 0,
   "user_name" : "user_name",
-  "is_anonymous" : true,
   "nick_name" : "nick_name",
-  "birth_year_and_month" : "birth_year_and_month",
   "profile_icon_image" : "profile_icon_image",
   "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
@@ -926,11 +925,68 @@ font-style: italic;
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="getViewedNovelsByUserId"/>
+  <div class="method"><a name="getUserByMe"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/viewed-novels</code></pre></div>
-    <div class="method-summary">ユーザーが閲覧している小説一覧を取得 (<span class="nickname">getViewedNovelsByUserId</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/me</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウント情報を取得 (<span class="nickname">getUserByMe</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ViewMeUser">ViewMeUser</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "good_count" : 6,
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "user_id" : 0,
+  "user_name" : "user_name",
+  "is_anonymous" : true,
+  "nick_name" : "nick_name",
+  "birth_year_and_month" : "birth_year_and_month",
+  "profile_icon_image" : "profile_icon_image",
+  "created_at" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    自分自身のユーザーアカウント情報
+        <a href="#ViewMeUser">ViewMeUser</a>
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getViewedNovelsByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/me/viewed_novels</code></pre></div>
+    <div class="method-summary">自分自身が閲覧している小説一覧を取得 (<span class="nickname">getViewedNovelsByMe</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -992,7 +1048,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    ユーザーIDで取得したユーザーが閲覧している小説一覧
+    自分自身が閲覧している小説一覧
         
     <h4 class="field-label">404</h4>
     ユーザーが見つからない
@@ -1002,7 +1058,7 @@ font-style: italic;
   <div class="method"><a name="registerUser"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/</code></pre></div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users</code></pre></div>
     <div class="method-summary">ユーザー登録 (<span class="nickname">registerUser</span>)</div>
     <div class="method-notes"></div>
 
@@ -1057,11 +1113,11 @@ font-style: italic;
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="updateUserById"/>
+  <div class="method"><a name="updateUserByMe"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/{user_id}</code></pre></div>
-    <div class="method-summary">IDでユーザーアカウント情報を更新 (<span class="nickname">updateUserById</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/me/update</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウント情報を更新 (<span class="nickname">updateUserByMe</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -1103,9 +1159,7 @@ font-style: italic;
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "user_id" : 0,
   "user_name" : "user_name",
-  "is_anonymous" : true,
   "nick_name" : "nick_name",
-  "birth_year_and_month" : "birth_year_and_month",
   "profile_icon_image" : "profile_icon_image",
   "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
@@ -1146,6 +1200,7 @@ font-style: italic;
     <li><a href="#UpdateUser"><code>UpdateUser</code> - </a></li>
     <li><a href="#User"><code>User</code> - </a></li>
     <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
+    <li><a href="#ViewMeUser"><code>ViewMeUser</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
   </ol>
 
@@ -1161,7 +1216,6 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価対象の投稿のID format: int64</div>
-<div class="param">evaluator_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価を行ったユーザーのID format: int64</div>
 <div class="param">evaluation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 評価の種類 </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">good</div><div class="param-enum">bad</div><div class="param-enum">stay</div>
@@ -1235,8 +1289,6 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">parent_sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のid format: int64</div>
-<div class="param">parent_sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のユーザーid format: int64</div>
-<div class="param">sentence_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 新投稿のユーザーid format: int64</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
     </div>  <!-- field-items -->
   </div>
@@ -1290,8 +1342,6 @@ font-style: italic;
       <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
 <div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
 <div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
-<div class="param">birth_year_and_month (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
-<div class="param">is_anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
 <div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
 <div class="param">good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
 <div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
@@ -1305,6 +1355,21 @@ font-style: italic;
       <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価対象の投稿のID format: int64</div>
 <div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Good評価の数 format: int64</div>
 <div class="param">evaluation_stay_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Stay評価の数 format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ViewMeUser"><code>ViewMeUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
+<div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
+<div class="param">good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
+<div class="param">birth_year_and_month (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
+<div class="param">is_anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
