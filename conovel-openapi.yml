@@ -102,28 +102,7 @@ paths:
                 $ref: "#/components/schemas/NovelDetail"
         '404':
           description: "小説が見つからない"
-  /users: # 不要なAPI？（調査中）
-    post:
-      tags:
-        - users
-      operationId: registerUser
-      summary: "ユーザー登録"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RegisterUser"
-      responses:
-        '201':
-          description: "ユーザー登録に成功"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterUserResult"
-        '400':
-          description: "ユーザー登録に失敗"
-  /users/me: # 他のユーザーに表示させたくない情報を含むためmeに変更
+  /users/me:
     get:
       tags:
         - users
@@ -138,7 +117,7 @@ paths:
                 $ref: "#/components/schemas/ViewMeUser"
         '404':
           description: "ユーザーが見つからない"
-  /users/me/update: # 他のユーザーにアカウント更新させたくないためmeに変更
+  /users/me/update:
     post:
       tags:
         - users
@@ -159,32 +138,26 @@ paths:
                 $ref: "#/components/schemas/User"
         '400':
           description: "ユーザー情報の更新に失敗"
-  /users/me/delete: # 他のユーザーにアカウント削除させたくないためmeに変更
+  /users/me/delete: # 必要なので残すがrequestBodyは削除
     post:
       tags:
         - users
       operationId:  deleteUserByMe
       summary: "自分自身のユーザーアカウントを削除（論理削除）"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DeleteUser"
       responses:
         '200':
           description: "ユーザーの削除に成功"
         '400':
           description: "ユーザーの削除に失敗"
-  /users/me/viewed_novels: # 他のユーザーに表示させたくない情報を含むためmeに変更
+  /users/me/viewed_novels: #閲覧している小説リストは別のユーザーからは見えない情報でOK？（user_id→meに変更）
     get:
       tags:
         - users
       operationId: getViewedNovelsByMe
-      summary: "自分自身が閲覧している小説一覧を取得"
+      summary: "自分自身が閲覧している小説リストを取得"
       responses:
         '200':
-          description: "自分自身が閲覧している小説一覧"
+          description: "自分自身が閲覧している小説リスト"
           content:
             application/json:
               schema:
@@ -233,39 +206,12 @@ paths:
                 $ref: "#/components/schemas/NovelList"
         '404':
           description: "ユーザーが見つからない"
-  /auth/login: # 不要なAPI？（調査中）
-    post:
-      tags:
-        - auth
-      operationId: logIn
-      summary: "ログイン"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LoginRequest"
-      responses:
-        '200':
-          description: "ログイン成功"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LoginResponse"
-        '401':
-          description: "認証失敗"
-  /auth/logout: # 不要なAPI？（調査中）
+  /auth/logout: # 必要なので残すがrequestBodyは削除（アクセストークンrequestHederで送る）
     post:
       tags:
         - auth
       operationId: logOut
       summary: "ログアウト"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LogoutRequest"
       responses:
         '200':
           description: "ログアウト成功"
@@ -430,56 +376,6 @@ components:
             overview:
               type: string
               description: "小説のあらすじ"
-    RegisterUser:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          description: "ユーザーのメールアドレス"
-        google_sub:
-          type: string
-          maxLength: 128
-          description: "Googleのサブジェクト識別子"
-    RegisterUserResult:
-      allOf:
-        - $ref: "#/components/schemas/RegisterUser"
-        - type: object
-          properties:
-            user_id:
-              type: integer
-              format: int64
-              description: "ユーザーの一意のid"
-            created_at:
-              type: string
-              format: date-time
-              description: "ユーザーの作成日時"
-    LoginRequest:
-      type: object
-      properties:
-        google_token:
-          type: string
-          description: "Google OAuthのトークン"
-      required:
-        - google_token
-    LoginResponse:
-      type: object
-      properties:
-        user_id:
-          type: integer
-          format: int64
-          description: "ユーザーの一意のID"
-        access_token:
-          type: string
-          description: "アクセストークン"
-    LogoutRequest:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: "アクセストークン"
-      required:
-        - access_token
     User:
       type: object
       properties:
@@ -533,12 +429,3 @@ components:
         profile_icon_image: #追加
           type: string
           description: "ユーザーアイコン画像のurl"
-    DeleteUser:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: "アクセストークン"
-      required:
-        - user_id
-        - access_token
