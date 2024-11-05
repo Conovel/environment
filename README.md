@@ -139,7 +139,7 @@ bin/rails  db:migrate
 bin/rails db:seed  # 必要に応じて
 ```
 
-#### 4. シェルから出る
+#### 5. シェルから出る
 ```sh
 exit
 ```
