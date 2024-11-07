@@ -138,7 +138,7 @@ paths:
                 $ref: "#/components/schemas/User"
         '400':
           description: "ユーザー情報の更新に失敗"
-  /users/me/delete: # 必要なので残すがrequestBodyは削除
+  /users/me/delete:
     post:
       tags:
         - users
@@ -149,7 +149,7 @@ paths:
           description: "ユーザーの削除に成功"
         '400':
           description: "ユーザーの削除に失敗"
-  /users/me/viewed_novels: #閲覧している小説リストは別のユーザーからは見えない情報でOK？（user_id→meに変更）
+  /users/me/viewed_novels:
     get:
       tags:
         - users
@@ -206,7 +206,7 @@ paths:
                 $ref: "#/components/schemas/NovelList"
         '404':
           description: "ユーザーが見つからない"
-  /auth/logout: # 必要なので残すがrequestBodyは削除（アクセストークンrequestHederで送る）
+  /auth/logout:
     post:
       tags:
         - auth
@@ -332,16 +332,16 @@ components:
           items:
             type: string
           description: "小説のジャンル"
-        is_new: # ブラウザ側で判定するなら不要？
+        is_new:
           type: boolean
           description: "新着小説かどうか"
-        is_famous: # ブラウザ側で判定するなら不要？
+        is_famous:
           type: boolean
           description: "人気小説かどうか"
         view_count:
           type: integer
           description: "小説の閲覧数"
-        evaluation_good_count: # 追加（メダル数を表示しない代わりに）
+        evaluation_good_count:
           type: integer
           description: "小説のGood評価の数"
         created_at:
@@ -426,6 +426,6 @@ components:
         is_anonymous:
           type: boolean
           description: "匿名設定"
-        profile_icon_image: #追加
+        profile_icon_image:
           type: string
           description: "ユーザーアイコン画像のurl"
