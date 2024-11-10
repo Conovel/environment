@@ -41,7 +41,7 @@ components:
         sentence_user_id:
           type: integer
           format: int64
-          description: "投稿の親投稿のid"
+          description: "投稿ユーザーのid"
         sentence_user_name:
           type: string
           description: "投稿ユーザーのペンネーム"
@@ -73,7 +73,7 @@ components:
           $ref: "#/components/schemas/Sentence"
         parent:
           $ref: "#/components/schemas/Sentence"
-        parentParallel:
+        parent_parallel:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
