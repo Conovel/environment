@@ -256,6 +256,11 @@ rspecによるテスト（APIの修正後に実行）
 $ docker-compose exec backend bundle exec rspec
 ```
 
+rubocopによるデータ整形（書式によるプッシュエラーが起きた時）
+```sh
+$ docker-compose exec backend bundle exec rubocop -A
+```
+
 #### SwaggerUI
 SwaggerUIはopenApiドキュメント
 
