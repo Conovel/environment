@@ -28,6 +28,10 @@ paths:
           description: "新規投稿の追加に失敗"
         '409':
           description: "親投稿が編集されたため、投稿を保留"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
   /sentences/{sentence_id}:
     get:
       tags:
@@ -266,7 +270,7 @@ components:
           $ref: "#/components/schemas/Sentence"
         parent:
           $ref: "#/components/schemas/Sentence"
-        parallel:
+        parallels:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
