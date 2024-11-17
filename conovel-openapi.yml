@@ -26,6 +26,8 @@ paths:
                 $ref: "#/components/schemas/ViewSentence"
         '400':
           description: "新規投稿の追加に失敗"
+        '409':
+          description: "親投稿が編集されたため、投稿を保留"
   /sentences/{sentence_id}:
     get:
       tags:
@@ -275,6 +277,10 @@ components:
           type: integer
           format: int64
           description: "親投稿のid"
+        parent_updated_at:
+          type: string
+          format: date-time
+          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するためs)"
         sentence:
           type: string
           description: "新投稿の本文テキスト"
