@@ -264,7 +264,7 @@ components:
           $ref: "#/components/schemas/Sentence"
         parent:
           $ref: "#/components/schemas/Sentence"
-        parent_parallel:
+        parallel:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
