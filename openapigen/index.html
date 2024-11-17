@@ -483,7 +483,7 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   },
-  "children" : [ {
+  "parallel" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -504,7 +504,7 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   } ],
-  "parent_parallel" : [ {
+  "children" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -601,7 +601,7 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   },
-  "children" : [ {
+  "parallel" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -622,7 +622,7 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   } ],
-  "parent_parallel" : [ {
+  "children" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -669,6 +669,9 @@ font-style: italic;
         <a href="#ViewSentence">ViewSentence</a>
     <h4 class="field-label">400</h4>
     新規投稿の追加に失敗
+        <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    親投稿が編集されたため、投稿を保留
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
@@ -1087,6 +1090,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">parent_sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のid format: int64</div>
+<div class="param">parent_updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 親投稿の修正日時(投稿中の親投稿の更新有無を確認するため) format: date-time</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
     </div>  <!-- field-items -->
   </div>
@@ -1158,7 +1162,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parent_parallel (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+<div class="param">parallel (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
 <div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
