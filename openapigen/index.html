@@ -504,7 +504,18 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   } ],
-  "parent_parallel" : [ {
+  "main" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "parallels" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -524,18 +535,7 @@ font-style: italic;
     "sentence_user_id" : 6,
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
-  } ],
-  "main" : {
-    "sentence" : "sentence",
-    "updated_at" : "2000-01-23T04:56:07.000+00:00",
-    "sentence_id" : 0,
-    "profile_icon_image" : "profile_icon_image",
-    "evaluation_good_count" : 1,
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "sentence_user_id" : 6,
-    "evaluation_stay_count" : 5,
-    "sentence_user_name" : "sentence_user_name"
-  }
+  } ]
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -622,7 +622,54 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   } ],
-  "parent_parallel" : [ {
+  "main" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "parallels" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ]
+}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "parent" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "children" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -653,7 +700,28 @@ font-style: italic;
     "sentence_user_id" : 6,
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
-  }
+  },
+  "parallels" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ]
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -670,6 +738,9 @@ font-style: italic;
     <h4 class="field-label">400</h4>
     新規投稿の追加に失敗
         <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    親投稿が編集されたため、投稿を保留
+        <a href="#ViewSentence">ViewSentence</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
@@ -1087,6 +1158,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">parent_sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のid format: int64</div>
+<div class="param">parent_updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 親投稿の修正日時(投稿中の親投稿の更新有無を確認するため) format: date-time</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
     </div>  <!-- field-items -->
   </div>
@@ -1158,7 +1230,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parent_parallel (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+<div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
 <div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
