@@ -5,12 +5,39 @@ info:
 servers:
   - url: /v1
 paths:
+  /sentences:
+    post:
+      tags:
+        - sentences
+      operationId: postSentence
+      summary: "メイン投稿の続きの新規投稿を作成"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostSentence"
+      responses:
+        '201':
+          description: "新規投稿の追加に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
+        '400':
+          description: "新規投稿の追加に失敗"
+        '409':
+          description: "親投稿が編集されたため、投稿を保留"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
   /sentences/{sentence_id}:
     get:
       tags:
         - sentences
       operationId: getSentenceById
-      summary: Get a sentence by ID
+      summary: "IDで投稿を取得"
       parameters:
         - name: sentence_id
           in: path
@@ -19,13 +46,183 @@ paths:
             type: integer
       responses:
         '200':
-          description: A single sentence
+          description: "投稿IDで取得した投稿および関連投稿"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ViewSentence"
         '404':
-          description: Sentence not found
+          description: "投稿が見つからない"
+  /evaluations:
+    post:
+      tags:
+        - evaluations
+      operationId: evaluateSentence
+      summary: "投稿に対する評価を追加"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EvaluateSentence"
+      responses:
+        '201':
+          description: "評価の追加に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewEvaluation"
+        '400':
+          description: "評価の追加に失敗"
+  /novels:
+    get:
+      tags:
+        - novels
+      operationId: getNovels
+      summary: "小説リストを取得"
+      responses:
+        '200':
+          description: "直近で後続の投稿があったものを先頭にした小説リスト"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NovelList"
+  /novels/{title_id}:
+    get:
+      tags:
+        - novels
+      operationId: getNovelById
+      summary: "IDで小説の概要を取得"
+      parameters:
+        - name: title_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "小説IDで取得した各小説の概要"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NovelDetail"
+        '404':
+          description: "小説が見つからない"
+  /users/me:
+    get:
+      tags:
+        - users
+      operationId: getUserByMe
+      summary: "自分自身のユーザーアカウント情報を取得"
+      responses:
+        '200':
+          description: "自分自身のユーザーアカウント情報"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewMeUser"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/me/update:
+    post:
+      tags:
+        - users
+      operationId:  updateUserByMe
+      summary: "自分自身のユーザーアカウント情報を更新"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        '200':
+          description: "ユーザー情報の更新に成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: "ユーザー情報の更新に失敗"
+  /users/me/delete:
+    post:
+      tags:
+        - users
+      operationId:  deleteUserByMe
+      summary: "自分自身のユーザーアカウントを削除（論理削除）"
+      responses:
+        '200':
+          description: "ユーザーの削除に成功"
+        '400':
+          description: "ユーザーの削除に失敗"
+  /users/me/viewed_novels:
+    get:
+      tags:
+        - users
+      operationId: getViewedNovelsByMe
+      summary: "自分自身が閲覧している小説リストを取得"
+      responses:
+        '200':
+          description: "自分自身が閲覧している小説リスト"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NovelList"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/{user_id}:
+    get:
+      tags:
+        - users
+      operationId: getUserById
+      summary: "IDで自分以外のユーザーアカウント情報を取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーアカウント情報"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '404':
+          description: "ユーザーが見つからない"
+  /users/{user_id}/posted_novels:
+    get:
+      tags:
+        - users
+      operationId: getNovelsByUserId
+      summary: "ユーザーが投稿している小説リストを取得"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "ユーザーIDで取得したユーザーが投稿している小説リスト"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NovelList"
+        '404':
+          description: "ユーザーが見つからない"
+  /auth/logout:
+    post:
+      tags:
+        - auth
+      operationId: logOut
+      summary: "ログアウト"
+      responses:
+        '200':
+          description: "ログアウト成功"
+        '401':
+          description: "認証失敗"
 components:
   schemas:
     Sentence:
@@ -73,7 +270,172 @@ components:
           $ref: "#/components/schemas/Sentence"
         parent:
           $ref: "#/components/schemas/Sentence"
-        parent_parallel:
+        parallels:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
+    PostSentence:
+      type: object
+      properties:
+        parent_sentence_id:
+          type: integer
+          format: int64
+          description: "親投稿のid"
+        parent_updated_at:
+          type: string
+          format: date-time
+          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)"
+        sentence:
+          type: string
+          description: "新投稿の本文テキスト"
+    EvaluateSentence:
+      type: object
+      properties:
+        sentence_id:
+          type: integer
+          format: int64
+          description: "評価対象の投稿のID"
+        evaluation:
+          type: string
+          enum: [good, bad, stay]
+          description: "評価の種類"
+    ViewEvaluation:
+      type: object
+      properties:
+        sentence_id:
+          type: integer
+          format: int64
+          description: "評価対象の投稿のID"
+        evaluation_good_count:
+          type: integer
+          format: int64
+          description: "Good評価の数"
+        evaluation_stay_count:
+          type: integer
+          format: int64
+          description: "Stay評価の数"
+    NovelListItem:
+      type: object
+      properties:
+        title_id:
+          type: integer
+          format: int64
+          description: "小説の一意のid（この値は他の小説と重複しない必要があります）"
+        title:
+          type: string
+          description: "小説のタイトル"
+        famous_sentence_text:
+          type: string
+          description: "名言・印象に残るシーン"
+        author_user_id:
+          type: integer
+          format: int64
+          description: "小説の作者のid"
+        author_user_name:
+          type: string
+          description: "小説の作者のペンネーム"
+        profile_icon_image:
+          type: string
+          description: "小説の作者のアイコン画像のurl"
+        title_genres:
+          type: array
+          items:
+            type: string
+          description: "小説のジャンル"
+        is_new:
+          type: boolean
+          description: "新着小説かどうか"
+        is_famous:
+          type: boolean
+          description: "人気小説かどうか"
+        view_count:
+          type: integer
+          description: "小説の閲覧数"
+        evaluation_good_count:
+          type: integer
+          description: "小説のGood評価の数"
+        created_at:
+          type: string
+          format: date-time
+          description: "小説の作成日時"
+        updated_at:
+          type: string
+          format: date-time
+          description: "小説の修正日時"
+    NovelList:
+      type: array
+      items:
+        $ref: "#/components/schemas/NovelListItem"
+    NovelDetail:
+      allOf:
+        - $ref: "#/components/schemas/NovelListItem"
+        - type: object
+          properties:
+            main_copy:
+              type: string
+              description: "小説の紹介文"
+            sentence_user_count:
+              type: integer
+              description: "小説に投稿された投稿の数"
+            sentence_hierarchy_count:
+              type: integer
+              description: "小説に投稿された投稿の階層数"
+            reader_count:
+              type: integer
+              description: "小説を読んだユーザーの数"
+            overview:
+              type: string
+              description: "小説のあらすじ"
+    User:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          description: "ユーザーの一意のid"
+        user_name:
+          type: string
+          description: "ユーザーのペンネーム"
+        nick_name:
+          type: string
+          description: "ユーザーのニックネーム"
+        profile_icon_image:
+          type: string
+          description: "ユーザーアイコン画像のurl"
+        evaluation_good_count:
+          type: integer
+          description: "Good評価の数"
+        created_at:
+          type: string
+          format: date-time
+          description: "ユーザーの作成日時"
+        updated_at:
+          type: string
+          format: date-time
+          description: "ユーザーの修正日時"
+    ViewMeUser:
+      allOf:
+        - $ref: "#/components/schemas/User"
+        - type: object
+          properties:
+            birth_year_and_month:
+              type: string
+              description: "ユーザーの生年月（YYYY/MM）"
+            is_anonymous:
+              type: boolean
+              description: "匿名設定"
+    UpdateUser:
+      type: object
+      properties:
+        user_name:
+          type: string
+          description: "ユーザーのペンネーム"
+        nick_name:
+          type: string
+          description: "ユーザーのニックネーム"
+        is_anonymous:
+          type: boolean
+          description: "匿名設定"
+        profile_icon_image:
+          type: string
+          description: "ユーザーアイコン画像のurl"

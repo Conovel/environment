@@ -194,17 +194,259 @@ font-style: italic;
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
+  <h4><a href="#Auth">Auth</a></h4>
+  <ul>
+  <li><a href="#logOut"><code><span class="http-method">post</span> /auth/logout</code></a></li>
+  </ul>
+  <h4><a href="#Evaluations">Evaluations</a></h4>
+  <ul>
+  <li><a href="#evaluateSentence"><code><span class="http-method">post</span> /evaluations</code></a></li>
+  </ul>
+  <h4><a href="#Novels">Novels</a></h4>
+  <ul>
+  <li><a href="#getNovelById"><code><span class="http-method">get</span> /novels/{title_id}</code></a></li>
+  <li><a href="#getNovels"><code><span class="http-method">get</span> /novels</code></a></li>
+  </ul>
   <h4><a href="#Sentences">Sentences</a></h4>
   <ul>
   <li><a href="#getSentenceById"><code><span class="http-method">get</span> /sentences/{sentence_id}</code></a></li>
+  <li><a href="#postSentence"><code><span class="http-method">post</span> /sentences</code></a></li>
+  </ul>
+  <h4><a href="#Users">Users</a></h4>
+  <ul>
+  <li><a href="#deleteUserByMe"><code><span class="http-method">post</span> /users/me/delete</code></a></li>
+  <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted_novels</code></a></li>
+  <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
+  <li><a href="#getUserByMe"><code><span class="http-method">get</span> /users/me</code></a></li>
+  <li><a href="#getViewedNovelsByMe"><code><span class="http-method">get</span> /users/me/viewed_novels</code></a></li>
+  <li><a href="#updateUserByMe"><code><span class="http-method">post</span> /users/me/update</code></a></li>
   </ul>
 
+  <h1><a name="Auth">Auth</a></h1>
+  <div class="method"><a name="logOut"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/logout</code></pre></div>
+    <div class="method-summary">ログアウト (<span class="nickname">logOut</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ログアウト成功
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    認証失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Evaluations">Evaluations</a></h1>
+  <div class="method"><a name="evaluateSentence"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /evaluations</code></pre></div>
+    <div class="method-summary">投稿に対する評価を追加 (<span class="nickname">evaluateSentence</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">EvaluateSentence <a href="#EvaluateSentence">EvaluateSentence</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ViewEvaluation">ViewEvaluation</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "sentence_id" : 0,
+  "evaluation_good_count" : 6,
+  "evaluation_stay_count" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    評価の追加に成功
+        <a href="#ViewEvaluation">ViewEvaluation</a>
+    <h4 class="field-label">400</h4>
+    評価の追加に失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Novels">Novels</a></h1>
+  <div class="method"><a name="getNovelById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /novels/{title_id}</code></pre></div>
+    <div class="method-summary">IDで小説の概要を取得 (<span class="nickname">getNovelById</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">title_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#NovelDetail">NovelDetail</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "overview" : "overview",
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "sentence_user_count" : 5,
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "reader_count" : 7,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "main_copy" : "main_copy",
+  "sentence_hierarchy_count" : 2,
+  "view_count" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    小説IDで取得した各小説の概要
+        <a href="#NovelDetail">NovelDetail</a>
+    <h4 class="field-label">404</h4>
+    小説が見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getNovels"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /novels</code></pre></div>
+    <div class="method-summary">小説リストを取得 (<span class="nickname">getNovels</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#NovelListItem">NovelListItem</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+}, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    直近で後続の投稿があったものを先頭にした小説リスト
+        
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Sentences">Sentences</a></h1>
   <div class="method"><a name="getSentenceById"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /sentences/{sentence_id}</code></pre></div>
-    <div class="method-summary">Get a sentence by ID (<span class="nickname">getSentenceById</span>)</div>
+    <div class="method-summary">IDで投稿を取得 (<span class="nickname">getSentenceById</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -262,7 +504,104 @@ font-style: italic;
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
   } ],
-  "parent_parallel" : [ {
+  "main" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "parallels" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    投稿IDで取得した投稿および関連投稿
+        <a href="#ViewSentence">ViewSentence</a>
+    <h4 class="field-label">404</h4>
+    投稿が見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postSentence"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /sentences</code></pre></div>
+    <div class="method-summary">メイン投稿の続きの新規投稿を作成 (<span class="nickname">postSentence</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">PostSentence <a href="#PostSentence">PostSentence</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ViewSentence">ViewSentence</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "parent" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "children" : [ {
     "sentence" : "sentence",
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "sentence_id" : 0,
@@ -293,7 +632,257 @@ font-style: italic;
     "sentence_user_id" : 6,
     "evaluation_stay_count" : 5,
     "sentence_user_name" : "sentence_user_name"
-  }
+  },
+  "parallels" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ]
+}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "parent" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "children" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ],
+  "main" : {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  },
+  "parallels" : [ {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  }, {
+    "sentence" : "sentence",
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_id" : 0,
+    "profile_icon_image" : "profile_icon_image",
+    "evaluation_good_count" : 1,
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "sentence_user_id" : 6,
+    "evaluation_stay_count" : 5,
+    "sentence_user_name" : "sentence_user_name"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    新規投稿の追加に成功
+        <a href="#ViewSentence">ViewSentence</a>
+    <h4 class="field-label">400</h4>
+    新規投稿の追加に失敗
+        <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    親投稿が編集されたため、投稿を保留
+        <a href="#ViewSentence">ViewSentence</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="deleteUserByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/me/delete</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウントを削除（論理削除） (<span class="nickname">deleteUserByMe</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーの削除に成功
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    ユーザーの削除に失敗
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getNovelsByUserId"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}/posted_novels</code></pre></div>
+    <div class="method-summary">ユーザーが投稿している小説リストを取得 (<span class="nickname">getNovelsByUserId</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#NovelListItem">NovelListItem</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+}, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザーIDで取得したユーザーが投稿している小説リスト
+        
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUserById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{user_id}</code></pre></div>
+    <div class="method-summary">IDで自分以外のユーザーアカウント情報を取得 (<span class="nickname">getUserById</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#User">User</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "user_id" : 0,
+  "user_name" : "user_name",
+  "nick_name" : "nick_name",
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
+  "created_at" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -305,10 +894,191 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    A single sentence
-        <a href="#ViewSentence">ViewSentence</a>
+    ユーザーIDで取得したユーザーアカウント情報
+        <a href="#User">User</a>
     <h4 class="field-label">404</h4>
-    Sentence not found
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUserByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/me</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウント情報を取得 (<span class="nickname">getUserByMe</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ViewMeUser">ViewMeUser</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "user_id" : 0,
+  "user_name" : "user_name",
+  "is_anonymous" : true,
+  "nick_name" : "nick_name",
+  "birth_year_and_month" : "birth_year_and_month",
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
+  "created_at" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    自分自身のユーザーアカウント情報
+        <a href="#ViewMeUser">ViewMeUser</a>
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getViewedNovelsByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/me/viewed_novels</code></pre></div>
+    <div class="method-summary">自分自身が閲覧している小説リストを取得 (<span class="nickname">getViewedNovelsByMe</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#NovelListItem">NovelListItem</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+}, {
+  "is_new" : true,
+  "title_id" : 0,
+  "title_genres" : [ "title_genres", "title_genres" ],
+  "created_at" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "famous_sentence_text" : "famous_sentence_text",
+  "is_famous" : true,
+  "author_user_name" : "author_user_name",
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "author_user_id" : 6,
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 5,
+  "view_count" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    自分自身が閲覧している小説リスト
+        
+    <h4 class="field-label">404</h4>
+    ユーザーが見つからない
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateUserByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/me/update</code></pre></div>
+    <div class="method-summary">自分自身のユーザーアカウント情報を更新 (<span class="nickname">updateUserByMe</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">UpdateUser <a href="#UpdateUser">UpdateUser</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#User">User</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated_at" : "2000-01-23T04:56:07.000+00:00",
+  "user_id" : 0,
+  "user_name" : "user_name",
+  "nick_name" : "nick_name",
+  "profile_icon_image" : "profile_icon_image",
+  "evaluation_good_count" : 6,
+  "created_at" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ユーザー情報の更新に成功
+        <a href="#User">User</a>
+    <h4 class="field-label">400</h4>
+    ユーザー情報の更新に失敗
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
@@ -318,10 +1088,80 @@ font-style: italic;
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#EvaluateSentence"><code>EvaluateSentence</code> - </a></li>
+    <li><a href="#NovelDetail"><code>NovelDetail</code> - </a></li>
+    <li><a href="#NovelListItem"><code>NovelListItem</code> - </a></li>
+    <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
     <li><a href="#Sentence"><code>Sentence</code> - </a></li>
+    <li><a href="#UpdateUser"><code>UpdateUser</code> - </a></li>
+    <li><a href="#User"><code>User</code> - </a></li>
+    <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
+    <li><a href="#ViewMeUser"><code>ViewMeUser</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="EvaluateSentence"><code>EvaluateSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価対象の投稿のID format: int64</div>
+<div class="param">evaluation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 評価の種類 </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">good</div><div class="param-enum">bad</div><div class="param-enum">stay</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="NovelDetail"><code>NovelDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
+<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
+<div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
+<div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
+<div class="param">title_genres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
+<div class="param">is_new (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
+<div class="param">is_famous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 人気小説かどうか </div>
+<div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説のGood評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
+<div class="param">main_copy (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の紹介文 </div>
+<div class="param">sentence_user_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の数 </div>
+<div class="param">sentence_hierarchy_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説に投稿された投稿の階層数 </div>
+<div class="param">reader_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説を読んだユーザーの数 </div>
+<div class="param">overview (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のあらすじ </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="NovelListItem"><code>NovelListItem</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">title_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の一意のid（この値は他の小説と重複しない必要があります） format: int64</div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
+<div class="param">famous_sentence_text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
+<div class="param">author_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
+<div class="param">author_user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
+<div class="param">title_genres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
+<div class="param">is_new (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
+<div class="param">is_famous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 人気小説かどうか </div>
+<div class="param">view_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説の閲覧数 </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 小説のGood評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 小説の修正日時 format: date-time</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PostSentence"><code>PostSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">parent_sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 親投稿のid format: int64</div>
+<div class="param">parent_updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> 親投稿の修正日時(投稿中の親投稿の更新有無を確認するため) format: date-time</div>
+<div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 新投稿の本文テキスト </div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="Sentence"><code>Sentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
@@ -338,12 +1178,59 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="UpdateUser"><code>UpdateUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
+<div class="param">is_anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="User"><code>User</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
+<div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ViewEvaluation"><code>ViewEvaluation</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">sentence_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価対象の投稿のID format: int64</div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Good評価の数 format: int64</div>
+<div class="param">evaluation_stay_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Stay評価の数 format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ViewMeUser"><code>ViewMeUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
+<div class="param">user_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">nick_name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
+<div class="param">profile_icon_image (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
+<div class="param">evaluation_good_count (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
+<div class="param">created_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
+<div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
+<div class="param">birth_year_and_month (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
+<div class="param">is_anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="ViewSentence"><code>ViewSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parent_parallel (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+<div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
 <div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
