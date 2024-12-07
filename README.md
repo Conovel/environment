@@ -108,9 +108,38 @@ bin/rails db:create
 ```sh
 bin/rails db:migrate
 ```
-- 既存テーブルの修正時にも実行
+- 既存テーブルの修正時にも実行する（マイグレーションの修正履歴が残る）
 
-#### 4. シェルから出る
+#### 4. データベースのリセット
+マイグレーションの履歴を残さずにデータベースをゼロから構築し直す場合（※注：リリース後は履歴を残すべきなので基本的に使わない！）
+
+```sh
+bin/rails db:reset
+```
+- データベースをドロップし、再作成
+- マイグレーションは実行しない。スキーマファイルだけを利用する
+- シードデータがある場合は、それもロードする
+
+```sh
+bin/rails db:migrate:reset
+```
+- データベースをドロップし、再作成して、全てのマイグレーションを実行する
+- シードデータはロードしない
+
+```sh
+bin/rails db:setup
+```
+- データベースを作成し、全てのマイグレーションを実行し、シードデータをロードする
+- データベースが既に存在する場合は、ドロップしない
+
+上記でうまくいかない場合は、以下の手順を試してください（コマンドを一つずつ実行）
+```sh
+bin/rails  db:drop db:create
+bin/rails  db:migrate
+bin/rails db:seed  # 必要に応じて
+```
+
+#### 5. シェルから出る
 ```sh
 exit
 ```
@@ -225,6 +254,11 @@ export $(grep -v '^#' .env | xargs)
 rspecによるテスト（APIの修正後に実行）
 ```sh
 $ docker-compose exec backend bundle exec rspec
+```
+
+rubocopによるデータ整形（書式によるプッシュエラーが起きた時）
+```sh
+$ docker-compose exec backend bundle exec rubocop -A
 ```
 
 #### SwaggerUI
