@@ -506,5 +506,7 @@ components:
             code:
               type: integer
               format: int64
+              description: "エラーコード"
             message:
               type: string
+              description: "エラーメッセージ"
