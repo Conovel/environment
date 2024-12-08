@@ -784,6 +784,14 @@ font-style: italic;
     "sentence_user_name" : "sentence_user_name"
   } ]
 }</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "error" : {
+    "code" : "code",
+    "message" : "message"
+  }
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -802,6 +810,9 @@ font-style: italic;
     <h4 class="field-label">409</h4>
     親投稿が編集されたため、投稿を保留
         <a href="#postSentence_409_response">postSentence_409_response</a>
+    <h4 class="field-label">422</h4>
+    論理的なエラーによる投稿追加の失敗
+        <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
