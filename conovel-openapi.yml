@@ -434,7 +434,7 @@ components:
               description: "小説の紹介文"
             sentence_user_count:
               type: integer
-              description: "小説に投稿された投稿の数"
+              description: "小説に投稿している投稿者の数"
             sentence_hierarchy_count:
               type: integer
               description: "小説に投稿された投稿の階層数"
