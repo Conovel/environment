@@ -325,7 +325,7 @@ font-style: italic;
     <h4 class="field-label">201</h4>
     評価の追加に成功
         <a href="#ViewEvaluation">ViewEvaluation</a>
-    <h4 class="field-label">400</h4>
+    <h4 class="field-label">422</h4>
     評価の追加に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
@@ -477,7 +477,7 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     直近で後続の投稿があったものを先頭にした小説リスト
         
-    <h4 class="field-label">400</h4>
+    <h4 class="field-label">422</h4>
     小説リストの取得に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
@@ -784,14 +784,6 @@ font-style: italic;
     "sentence_user_name" : "sentence_user_name"
   } ]
 }</code></pre>
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "error" : {
-    "code" : 5,
-    "message" : "message"
-  }
-}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -804,15 +796,12 @@ font-style: italic;
     <h4 class="field-label">201</h4>
     新規投稿の追加に成功
         <a href="#ViewSentence">ViewSentence</a>
-    <h4 class="field-label">400</h4>
+    <h4 class="field-label">422</h4>
     新規投稿の追加に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
     <h4 class="field-label">409</h4>
     親投稿が編集されたため、投稿を保留
         <a href="#postSentence_409_response">postSentence_409_response</a>
-    <h4 class="field-label">422</h4>
-    論理的なエラーによる投稿追加の失敗
-        <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
@@ -852,7 +841,7 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     ユーザーの削除に成功
         <a href="#"></a>
-    <h4 class="field-label">400</h4>
+    <h4 class="field-label">422</h4>
     ユーザーの削除に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
@@ -1203,7 +1192,7 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     ユーザー情報の更新に成功
         <a href="#User">User</a>
-    <h4 class="field-label">400</h4>
+    <h4 class="field-label">422</h4>
     ユーザー情報の更新に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
