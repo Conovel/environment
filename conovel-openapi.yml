@@ -38,12 +38,6 @@ paths:
                 allOf:
                   - $ref: "#/components/schemas/ErrorResponse"
                   - $ref: "#/components/schemas/ViewSentence"
-        '422':
-          description: "論理的なエラーによる投稿追加の失敗"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
   /sentences/{sentence_id}:
     get:
       tags:
