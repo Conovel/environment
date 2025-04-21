@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=3000
     env_file:
-      - .env
+      - ./frontend/.env
     networks:
       - conovel-network
     volumes:
@@ -27,39 +27,34 @@ services:
     networks:
       - conovel-network
     depends_on:
-      - db
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DEVELOPMENT_ORIGIN_URL=${DEVELOPMENT_ORIGIN_URL}
-      - PRODUCTION_ORIGIN_URL=${PRODUCTION_ORIGIN_URL}
+      db:
+        condition: service_healthy
     env_file:
-      - .env
+      - ./backend/.env
     volumes:
       - ./backend:/app
       - swagger_data:/app/swagger
-    command: sh -c "bundle exec rails db:migrate db:seed && bundle exec puma -C config/puma.rb"
+    command: sh -c "bundle exec rails db:create db:migrate db:seed && bundle exec puma -C config/puma.rb"
 
   db:
     container_name: db
     build:
       context: .
       dockerfile: builder/db/Dockerfile
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: myapp_development
-      MYSQL_USER: ${MYAPP_DATABASE_USERNAME}
-      MYSQL_PASSWORD: ${MYAPP_DATABASE_PASSWORD}
     ports:
       - "3306:3306"
     networks:
       - conovel-network
     env_file:
-      - .env
+      - ./backend/.env
     volumes:
       - db_data:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}", "-e", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
 networks:
   conovel-network:
