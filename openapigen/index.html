@@ -197,6 +197,7 @@ font-style: italic;
   <h4><a href="#Auth">Auth</a></h4>
   <ul>
   <li><a href="#logOut"><code><span class="http-method">post</span> /auth/logout</code></a></li>
+  <li><a href="#refreshToken"><code><span class="http-method">post</span> /auth/refresh</code></a></li>
   </ul>
   <h4><a href="#Evaluations">Evaluations</a></h4>
   <ul>
@@ -258,6 +259,47 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     ログアウト成功
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    認証失敗
+        <a href="#ErrorResponse">ErrorResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="refreshToken"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/refresh</code></pre></div>
+    <div class="method-summary">トークンのリフレッシュ (<span class="nickname">refreshToken</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "error" : {
+    "code" : 5,
+    "message" : "message"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    トークンのリフレッシュ成功
         <a href="#"></a>
     <h4 class="field-label">401</h4>
     認証失敗

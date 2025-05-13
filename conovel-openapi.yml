@@ -275,6 +275,21 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"  
+  /auth/refresh:
+    post:
+      tags:
+        - auth
+      operationId: refreshToken
+      summary: "トークンのリフレッシュ"
+      responses:
+        '200':
+          description: "トークンのリフレッシュ成功"
+        '401':
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     Sentence:
