@@ -260,6 +260,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"  
+  /users/current_user_id:
+    get:
+      tags:
+        - users
+      operationId: getCurrentUserId
+      summary: "ログインしているユーザーのidを取得"
+      responses:
+        '200':
+          description: "ログインしているユーザーのid"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+        '401':
+          description: "ログインしているユーザーのidの取得に失敗"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"  
   /auth/logout:
     post:
       tags:
