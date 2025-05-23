@@ -844,7 +844,7 @@ font-style: italic;
         <a href="#ErrorResponse">ErrorResponse</a>
     <h4 class="field-label">409</h4>
     親投稿が編集されたため、投稿を保留
-        <a href="#postSentence_409_response">postSentence_409_response</a>
+        <a href="#ConflictSentence">ConflictSentence</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Users">Users</a></h1>
@@ -904,7 +904,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#getCurrentUserId_200_response">getCurrentUserId_200_response</a>
+      <a href="#CurrentUserId">CurrentUserId</a>
       
     </div>
 
@@ -934,7 +934,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     ログインしているユーザーのid
-        <a href="#getCurrentUserId_200_response">getCurrentUserId_200_response</a>
+        <a href="#CurrentUserId">CurrentUserId</a>
     <h4 class="field-label">401</h4>
     ログインしているユーザーのidの取得に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
@@ -1297,6 +1297,8 @@ font-style: italic;
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#ConflictSentence"><code>ConflictSentence</code> - </a></li>
+    <li><a href="#CurrentUserId"><code>CurrentUserId</code> - </a></li>
     <li><a href="#ErrorResponse"><code>ErrorResponse</code> - </a></li>
     <li><a href="#ErrorResponse_error"><code>ErrorResponse_error</code> - </a></li>
     <li><a href="#EvaluateSentence"><code>EvaluateSentence</code> - </a></li>
@@ -1309,10 +1311,26 @@ font-style: italic;
     <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
     <li><a href="#ViewMeUser"><code>ViewMeUser</code> - </a></li>
     <li><a href="#ViewSentence"><code>ViewSentence</code> - </a></li>
-    <li><a href="#getCurrentUserId_200_response"><code>getCurrentUserId_200_response</code> - </a></li>
-    <li><a href="#postSentence_409_response"><code>postSentence_409_response</code> - </a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="ConflictSentence"><code>ConflictSentence</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">error (optional)</div><div class="param-desc"><span class="param-type"><a href="#ErrorResponse_error">ErrorResponse_error</a></span>  </div>
+<div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
+<div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
+<div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+<div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CurrentUserId"><code>CurrentUserId</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> ログイン中のユーザーの一意のid </div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="ErrorResponse"><code>ErrorResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
@@ -1457,24 +1475,6 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
-<div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="getCurrentUserId_200_response"><code>getCurrentUserId_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="postSentence_409_response"><code>postSentence_409_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">error (optional)</div><div class="param-desc"><span class="param-type"><a href="#ErrorResponse_error">ErrorResponse_error</a></span>  </div>
-<div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
 <div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>

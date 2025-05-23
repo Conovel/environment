@@ -35,9 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                  - $ref: "#/components/schemas/ErrorResponse"
-                  - $ref: "#/components/schemas/ViewSentence"
+                $ref: "#/components/schemas/ConflictSentence"
   /sentences/{sentence_id}:
     get:
       tags:
@@ -272,10 +270,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  user_id:
-                    type: integer
+                $ref: "#/components/schemas/CurrentUserId"
         '401':
           description: "ログインしているユーザーのidの取得に失敗"
           content:
@@ -388,6 +383,10 @@ components:
           type: string
           enum: [good, bad, stay]
           description: "評価の種類"
+    ConflictSentence:
+      allOf:
+        - $ref: "#/components/schemas/ErrorResponse"
+        - $ref: "#/components/schemas/ViewSentence"    
     ViewEvaluation:
       type: object
       properties:
@@ -528,6 +527,12 @@ components:
         profile_icon_image:
           type: string
           description: "ユーザーアイコン画像のurl"
+    CurrentUserId:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          description: "ログイン中のユーザーの一意のid"
     ErrorResponse:
       type: object
       properties:
