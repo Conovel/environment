@@ -530,7 +530,7 @@ components:
     CurrentUserId:
       type: object
       properties:
-        user_id:
+        current_user_id:
           type: integer
           description: "ログイン中のユーザーの一意のid"
     ErrorResponse:
