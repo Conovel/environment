@@ -216,7 +216,6 @@ font-style: italic;
   <h4><a href="#Users">Users</a></h4>
   <ul>
   <li><a href="#deleteUserByMe"><code><span class="http-method">post</span> /users/me/delete</code></a></li>
-  <li><a href="#getCurrentUserId"><code><span class="http-method">get</span> /users/current_user_id</code></a></li>
   <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{user_id}/posted_novels</code></a></li>
   <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{user_id}</code></a></li>
   <li><a href="#getUserByMe"><code><span class="http-method">get</span> /users/me</code></a></li>
@@ -889,57 +888,6 @@ font-style: italic;
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="getCurrentUserId"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/current_user_id</code></pre></div>
-    <div class="method-summary">ログインしているユーザーのidを取得 (<span class="nickname">getCurrentUserId</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#CurrentUserId">CurrentUserId</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "current_user_id" : 0
-}</code></pre>
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "error" : {
-    "code" : 5,
-    "message" : "message"
-  }
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    ログインしているユーザーのid
-        <a href="#CurrentUserId">CurrentUserId</a>
-    <h4 class="field-label">401</h4>
-    ログインしているユーザーのidの取得に失敗
-        <a href="#ErrorResponse">ErrorResponse</a>
-  </div> <!-- method -->
-  <hr/>
   <div class="method"><a name="getNovelsByUserId"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1298,7 +1246,6 @@ font-style: italic;
   <h3>Table of Contents</h3>
   <ol>
     <li><a href="#ConflictSentence"><code>ConflictSentence</code> - </a></li>
-    <li><a href="#CurrentUserId"><code>CurrentUserId</code> - </a></li>
     <li><a href="#ErrorResponse"><code>ErrorResponse</code> - </a></li>
     <li><a href="#ErrorResponse_error"><code>ErrorResponse_error</code> - </a></li>
     <li><a href="#EvaluateSentence"><code>EvaluateSentence</code> - </a></li>
@@ -1322,13 +1269,6 @@ font-style: italic;
 <div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
 <div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
 <div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="CurrentUserId"><code>CurrentUserId</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">current_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> ログイン中のユーザーの一意のid </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
