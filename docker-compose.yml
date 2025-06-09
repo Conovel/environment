@@ -46,6 +46,7 @@ services:
     networks:
       - conovel-network
     env_file:
+      - .env
       - ./backend/.env
     volumes:
       - db_data:/var/lib/mysql
