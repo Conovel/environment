@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     libxslt1-dev \
     default-mysql-client \
     git \
+    cron \ 
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

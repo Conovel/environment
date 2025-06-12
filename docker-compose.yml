@@ -34,7 +34,7 @@ services:
     volumes:
       - ./backend:/app
       - swagger_data:/app/swagger
-    command: sh -c "bundle exec rails db:create db:migrate db:seed && bundle exec puma -C config/puma.rb"
+    command: sh -c "echo '0 0 * * * cd /app && bundle exec rails runner \"User.cleanup_expired_refresh_tokens\"' > /etc/cron.d/cleanup_task && chmod 0644 /etc/cron.d/cleanup_task && crontab /etc/cron.d/cleanup_task && service cron start && bundle exec rails db:create db:migrate db:seed && bundle exec puma -C config/puma.rb"
 
   db:
     container_name: db
