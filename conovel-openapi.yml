@@ -10,7 +10,7 @@ paths:
       tags:
         - sentences
       operationId: postSentence
-      summary: "メイン投稿の続きの新規投稿を作成"
+      summary: "メイン投稿の続きの新規投稿を作成（認証あり）"
       requestBody:
         required: true
         content:
@@ -41,7 +41,7 @@ paths:
       tags:
         - sentences
       operationId: getSentenceById
-      summary: "IDで投稿を取得"
+      summary: "IDで投稿を取得（認証あり）"
       parameters:
         - name: sentence_id
           in: path
@@ -66,7 +66,7 @@ paths:
       tags:
         - evaluations
       operationId: evaluateSentence
-      summary: "投稿に対する評価を追加"
+      summary: "投稿に対する評価を追加（認証あり）"
       requestBody:
         required: true
         content:
@@ -135,7 +135,7 @@ paths:
       tags:
         - users
       operationId: getUserByMe
-      summary: "自分自身のユーザーアカウント情報を取得"
+      summary: "自分自身のユーザーアカウント情報を取得（認証あり）"
       responses:
         '200':
           description: "自分自身のユーザーアカウント情報"
@@ -154,7 +154,7 @@ paths:
       tags:
         - users
       operationId:  updateUserByMe
-      summary: "自分自身のユーザーアカウント情報を更新"
+      summary: "自分自身のユーザーアカウント情報を更新（認証あり）"
       requestBody:
         required: true
         content:
@@ -179,7 +179,7 @@ paths:
       tags:
         - users
       operationId:  deleteUserByMe
-      summary: "自分自身のユーザーアカウントを削除（論理削除）"
+      summary: "自分自身のユーザーアカウントを論理削除（認証あり）"
       responses:
         '200':
           description: "ユーザーの削除に成功"
@@ -194,7 +194,7 @@ paths:
       tags:
         - users
       operationId: getViewedNovelsByMe
-      summary: "自分自身が閲覧している小説リストを取得"
+      summary: "自分自身が閲覧している小説リストを取得（認証あり）"
       responses:
         '200':
           description: "自分自身が閲覧している小説リスト"
@@ -263,7 +263,7 @@ paths:
       tags:
         - auth
       operationId: logOut
-      summary: "ログアウト"
+      summary: "ログアウト（認証あり）"
       responses:
         '200':
           description: "ログアウト成功"
@@ -278,7 +278,7 @@ paths:
       tags:
         - auth
       operationId: refreshToken
-      summary: "トークンのリフレッシュ"
+      summary: "トークンのリフレッシュ（認証あり）"
       responses:
         '200':
           description: "トークンのリフレッシュ成功"
