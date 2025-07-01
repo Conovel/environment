@@ -323,3 +323,7 @@ export $(grep -v '^#' .env | xargs)
 - `frontend/openapigen/common.ts`: APIクライアントの生成に必要な共通のユーティリティ関数や型定義を含むファイルです。
 - `frontend/openapigen/configuration.ts`: ConfigurationParametersインターフェースとConfigurationクラスが定義されています。APIの設定を行う際に使用します。
 - `frontend/openapigen/index.ts`: apiとconfigurationモジュールをエクスポートしています。API設定のエントリーポイントとして使用します。
+
+※不要なimportの削除
+
+- api.tsの中で未使用のimportが残っているとCI/CDでエラーになるため削除する（例：`setApiKeyToObject`など）
