@@ -263,7 +263,7 @@ paths:
       tags:
         - auth
       operationId: logOut
-      summary: "ログアウト（認証あり）"
+      summary: "ログアウト"
       responses:
         '200':
           description: "ログアウト成功"
