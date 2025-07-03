@@ -36,14 +36,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ConflictSentence"
-  /sentences/{sentenceId}:
+  /sentences/{sentence_id}:
     get:
       tags:
         - sentences
       operationId: getSentenceById
       summary: "IDで投稿を取得（認証あり）"
       parameters:
-        - name: sentenceId
+        - name: sentence_id
           in: path
           required: true
           schema:
@@ -105,14 +105,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"                   
-  /novels/{titleId}:
+  /novels/{title_id}:
     get:
       tags:
         - novels
       operationId: getNovelById
       summary: "IDで小説の概要を取得"
       parameters:
-        - name: titleId
+        - name: title_id
           in: path
           required: true
           schema:
@@ -189,7 +189,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"  
-  /users/me/viewedNovels:
+  /users/me/viewed_novels:
     get:
       tags:
         - users
@@ -208,14 +208,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"  
-  /users/{userId}:
+  /users/{user_id}:
     get:
       tags:
         - users
       operationId: getUserById
       summary: "IDで自分以外のユーザーアカウント情報を取得"
       parameters:
-        - name: userId
+        - name: user_id
           in: path
           required: true
           schema:
@@ -233,14 +233,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"  
-  /users/{userId}/postedNovels:
+  /users/{user_id}/posted_novels:
     get:
       tags:
         - users
       operationId: getNovelsByUserId
       summary: "ユーザーが投稿している小説リストを取得"
       parameters:
-        - name: userId
+        - name: user_id
           in: path
           required: true
           schema:
@@ -293,34 +293,34 @@ components:
     Sentence:
       type: object
       properties:
-        sentenceId:
+        sentence_id:
           type: integer
           format: int64
           description: "投稿の一意のid（この値は他の投稿と重複しない必要があります）"
         sentence:
           type: string
           description: "投稿の本文テキスト"
-        sentenceUserId:
+        sentence_user_id:
           type: integer
           format: int64
           description: "投稿ユーザーのid"
-        sentenceUserName:
+        sentence_user_name:
           type: string
           description: "投稿ユーザーのペンネーム"
-        profileIconImage:
+        profile_icon_image:
           type: string
           description: "投稿ユーザーアイコン画像のurl"
-        evaluationGoodCount:
+        evaluation_good_count:
           type: integer
           description: "投稿に対するGood評価の数"
-        evaluationStayCount:
+        evaluation_stay_count:
           type: integer
           description: "投稿に対するStay評価の数"
-        createdAt:
+        created_at:
           type: string
           format: date-time
           description: "投稿日時"
-        updatedAt:
+        updated_at:
           type: string
           format: date-time
           description: "修正日時"
@@ -342,11 +342,11 @@ components:
     PostSentence:
       type: object
       properties:
-        parentSentenceId:
+        parent_sentence_id:
           type: integer
           format: int64
           description: "親投稿のid"
-        parentUpdatedAt:
+        parent_updated_at:
           type: string
           format: date-time
           description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)"
@@ -356,7 +356,7 @@ components:
     EvaluateSentence:
       type: object
       properties:
-        sentenceId:
+        sentence_id:
           type: integer
           format: int64
           description: "評価対象の投稿のID"
@@ -371,63 +371,63 @@ components:
     ViewEvaluation:
       type: object
       properties:
-        sentenceId:
+        sentence_id:
           type: integer
           format: int64
           description: "評価対象の投稿のID"
-        evaluationGoodCount:
+        evaluation_good_count:
           type: integer
           format: int64
           description: "Good評価の数"
-        evaluationStayCount:
+        evaluation_stay_count:
           type: integer
           format: int64
           description: "Stay評価の数"
     NovelListItem:
       type: object
       properties:
-        titleId:
+        title_id:
           type: integer
           format: int64
           description: "小説の一意のid（この値は他の小説と重複しない必要があります）"
         title:
           type: string
           description: "小説のタイトル"
-        famousSentenceText:
+        famous_sentence_text:
           type: string
           description: "名言・印象に残るシーン"
-        authorUserId:
+        author_user_id:
           type: integer
           format: int64
           description: "小説の作者のid"
-        authorUserName:
+        author_user_name:
           type: string
           description: "小説の作者のペンネーム"
-        profileIconImage:
+        profile_icon_image:
           type: string
           description: "小説の作者のアイコン画像のurl"
-        titleGenres:
+        title_genres:
           type: array
           items:
             type: string
           description: "小説のジャンル"
-        isNew:
+        is_new:
           type: boolean
           description: "新着小説かどうか"
-        isFamous:
+        is_famous:
           type: boolean
           description: "人気小説かどうか"
-        viewCount:
+        view_count:
           type: integer
           description: "小説の閲覧数"
-        evaluationGoodCount:
+        evaluation_good_count:
           type: integer
           description: "小説のGood評価の数"
-        createdAt:
+        created_at:
           type: string
           format: date-time
           description: "小説の作成日時"
-        updatedAt:
+        updated_at:
           type: string
           format: date-time
           description: "小説の修正日時"
@@ -440,16 +440,16 @@ components:
         - $ref: "#/components/schemas/NovelListItem"
         - type: object
           properties:
-            mainCopy:
+            main_copy:
               type: string
               description: "小説の紹介文"
-            sentenceUserCount:
+            sentence_user_count:
               type: integer
               description: "小説に投稿している投稿者の数"
-            sentenceHierarchyCount:
+            sentence_hierarchy_count:
               type: integer
               description: "小説に投稿された投稿の階層数"
-            readerCount:
+            reader_count:
               type: integer
               description: "小説を読んだユーザーの数"
             overview:
@@ -458,27 +458,27 @@ components:
     User:
       type: object
       properties:
-        userId:
+        user_id:
           type: integer
           format: int64
           description: "ユーザーの一意のid"
-        userName:
+        user_name:
           type: string
           description: "ユーザーのペンネーム"
-        nickName:
+        nick_name:
           type: string
           description: "ユーザーのニックネーム"
-        profileIconImage:
+        profile_icon_image:
           type: string
           description: "ユーザーアイコン画像のurl"
-        evaluationGoodCount:
+        evaluation_good_count:
           type: integer
           description: "Good評価の数"
-        createdAt:
+        created_at:
           type: string
           format: date-time
           description: "ユーザーの作成日時"
-        updatedAt:
+        updated_at:
           type: string
           format: date-time
           description: "ユーザーの修正日時"
@@ -487,25 +487,25 @@ components:
         - $ref: "#/components/schemas/User"
         - type: object
           properties:
-            birthYearAndMonth:
+            birth_year_and_month:
               type: string
               description: "ユーザーの生年月（YYYY/MM）"
-            isAnonymous:
+            is_anonymous:
               type: boolean
               description: "匿名設定"
     UpdateUser:
       type: object
       properties:
-        userName:
+        user_name:
           type: string
           description: "ユーザーのペンネーム"
-        nickName:
+        nick_name:
           type: string
           description: "ユーザーのニックネーム"
-        isAnonymous:
+        is_anonymous:
           type: boolean
           description: "匿名設定"
-        profileIconImage:
+        profile_icon_image:
           type: string
           description: "ユーザーアイコン画像のurl"
     ErrorResponse:
