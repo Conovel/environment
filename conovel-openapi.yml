@@ -508,6 +508,15 @@ components:
         profileIconImage:
           type: string
           description: "ユーザーアイコン画像のurl"
+        birth_ym:
+          type: string
+          description: "ユーザーの生年月（YYYY/MM）"
+        agreed_terms_version:
+          type: integer
+          description: "同意した利用規約のバージョン"
+        remarks:
+          type: string
+          description: "ユーザーの備考"
     ErrorResponse:
       type: object
       properties:
