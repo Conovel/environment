@@ -341,18 +341,22 @@ components:
           $ref: "#/components/schemas/Sentences"
     PostSentence:
       type: object
+      required:
+        - parentSentenceId
+        - parentUpdatedAt
+        - sentence
       properties:
         parentSentenceId:
           type: integer
           format: int64
-          description: "親投稿のid"
+          description: "親投稿のid（必須）"
         parentUpdatedAt:
           type: string
           format: date-time
-          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)"
+          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)（必須）"
         sentence:
           type: string
-          description: "新投稿の本文テキスト"
+          description: "新投稿の本文テキスト（必須）"
     EvaluateSentence:
       type: object
       properties:
