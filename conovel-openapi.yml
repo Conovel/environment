@@ -499,7 +499,6 @@ components:
         - userName
         - nickName
         - isAnonymous
-        - profileIconImage
         - birthYm
         - agreedTermsVersion
       properties:
@@ -514,7 +513,7 @@ components:
           description: "匿名設定（必須）"
         profileIconImage:
           type: string
-          description: "ユーザーアイコン画像のurl（必須）"
+          description: "ユーザーアイコン画像のurl"
         birthYm:
           type: string
           description: "ユーザーの生年月（YYYY/MM）（必須）"
