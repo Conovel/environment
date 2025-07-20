@@ -495,25 +495,32 @@ components:
               description: "匿名設定"
     UpdateUser:
       type: object
+      required:
+        - userName
+        - nickName
+        - isAnonymous
+        - profileIconImage
+        - birth_ym
+        - agreed_terms_version
       properties:
         userName:
           type: string
-          description: "ユーザーのペンネーム"
+          description: "ユーザーのペンネーム（必須）"
         nickName:
           type: string
-          description: "ユーザーのニックネーム"
+          description: "ユーザーのニックネーム（必須）"
         isAnonymous:
           type: boolean
-          description: "匿名設定"
+          description: "匿名設定（必須）"
         profileIconImage:
           type: string
-          description: "ユーザーアイコン画像のurl"
+          description: "ユーザーアイコン画像のurl（必須）"
         birth_ym:
           type: string
-          description: "ユーザーの生年月（YYYY/MM）"
+          description: "ユーザーの生年月（YYYY/MM）（必須）"
         agreed_terms_version:
           type: integer
-          description: "同意した利用規約のバージョン"
+          description: "同意した利用規約のバージョン（必須）"
         remarks:
           type: string
           description: "ユーザーの備考"
