@@ -406,6 +406,7 @@ font-style: italic;
   "isFamous" : true,
   "overview" : "overview",
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -415,7 +416,6 @@ font-style: italic;
   "authorUserId" : 6,
   "sentenceUserCount" : 5,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "mainCopy" : "mainCopy",
   "sentenceHierarchyCount" : 2,
   "viewCount" : 1,
@@ -473,6 +473,7 @@ font-style: italic;
     <pre class="example"><code>[ {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -481,12 +482,12 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }, {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -495,7 +496,6 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 } ]</code></pre>
@@ -558,7 +558,7 @@ font-style: italic;
   "parent" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -569,7 +569,7 @@ font-style: italic;
   "children" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -579,7 +579,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -590,7 +590,7 @@ font-style: italic;
   "main" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -601,7 +601,7 @@ font-style: italic;
   "parallels" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -611,7 +611,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -684,7 +684,7 @@ font-style: italic;
   "parent" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -695,7 +695,7 @@ font-style: italic;
   "children" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -705,7 +705,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -716,7 +716,7 @@ font-style: italic;
   "main" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -727,7 +727,7 @@ font-style: italic;
   "parallels" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -737,7 +737,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -760,7 +760,7 @@ font-style: italic;
   "parent" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -771,7 +771,7 @@ font-style: italic;
   "children" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -781,7 +781,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -792,7 +792,7 @@ font-style: italic;
   "main" : {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -807,7 +807,7 @@ font-style: italic;
   "parallels" : [ {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -817,7 +817,7 @@ font-style: italic;
   }, {
     "sentence" : "sentence",
     "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentenceUserName" : "sentenceUserName",
+    "sentencePenName" : "sentencePenName",
     "profileIconImage" : "profileIconImage",
     "sentenceId" : 0,
     "evaluationGoodCount" : 1,
@@ -920,6 +920,7 @@ font-style: italic;
     <pre class="example"><code>[ {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -928,12 +929,12 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }, {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -942,7 +943,6 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 } ]</code></pre>
@@ -1002,10 +1002,10 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
+  "penName" : "penName",
   "nickName" : "nickName",
   "profileIconImage" : "profileIconImage",
   "evaluationGoodCount" : 6,
-  "userName" : "userName",
   "userId" : 0,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
@@ -1060,11 +1060,11 @@ font-style: italic;
     <pre class="example"><code>{
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "birthYearAndMonth" : "birthYearAndMonth",
+  "penName" : "penName",
   "isAnonymous" : true,
   "nickName" : "nickName",
   "profileIconImage" : "profileIconImage",
   "evaluationGoodCount" : 6,
-  "userName" : "userName",
   "userId" : 0,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
@@ -1119,6 +1119,7 @@ font-style: italic;
     <pre class="example"><code>[ {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -1127,12 +1128,12 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }, {
   "isFamous" : true,
   "titleId" : 0,
+  "authorPenName" : "authorPenName",
   "famousSentenceText" : "famousSentenceText",
   "titleGenres" : [ "titleGenres", "titleGenres" ],
   "evaluationGoodCount" : 5,
@@ -1141,7 +1142,6 @@ font-style: italic;
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "authorUserId" : 6,
   "profileIconImage" : "profileIconImage",
-  "authorUserName" : "authorUserName",
   "viewCount" : 1,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 } ]</code></pre>
@@ -1207,10 +1207,10 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
+  "penName" : "penName",
   "nickName" : "nickName",
   "profileIconImage" : "profileIconImage",
   "evaluationGoodCount" : 6,
-  "userName" : "userName",
   "userId" : 0,
   "updatedAt" : "2000-01-23T04:56:07.000+00:00"
 }</code></pre>
@@ -1304,7 +1304,7 @@ font-style: italic;
 <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
 <div class="param">famousSentenceText (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
 <div class="param">authorUserId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
-<div class="param">authorUserName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
+<div class="param">authorPenName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
 <div class="param">titleGenres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
 <div class="param">isNew (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
@@ -1328,7 +1328,7 @@ font-style: italic;
 <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説のタイトル </div>
 <div class="param">famousSentenceText (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 名言・印象に残るシーン </div>
 <div class="param">authorUserId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 小説の作者のid format: int64</div>
-<div class="param">authorUserName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
+<div class="param">authorPenName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のペンネーム </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 小説の作者のアイコン画像のurl </div>
 <div class="param">titleGenres (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> 小説のジャンル </div>
 <div class="param">isNew (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 新着小説かどうか </div>
@@ -1355,7 +1355,7 @@ font-style: italic;
       <div class="param">sentenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の一意のid（この値は他の投稿と重複しない必要があります） format: int64</div>
 <div class="param">sentence (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿の本文テキスト </div>
 <div class="param">sentenceUserId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿ユーザーのid format: int64</div>
-<div class="param">sentenceUserName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーのペンネーム </div>
+<div class="param">sentencePenName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーのペンネーム </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿ユーザーアイコン画像のurl </div>
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するGood評価の数 </div>
 <div class="param">evaluationStayCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 投稿に対するStay評価の数 </div>
@@ -1367,7 +1367,7 @@ font-style: italic;
     <h3><a name="UpdateUser"><code>UpdateUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">userName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム（必須） </div>
+      <div class="param">penName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム（必須） </div>
 <div class="param">nickName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム（必須） </div>
 <div class="param">isAnonymous </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定（必須） </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
@@ -1381,7 +1381,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
-<div class="param">userName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">penName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
 <div class="param">nickName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
@@ -1403,7 +1403,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ユーザーの一意のid format: int64</div>
-<div class="param">userName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
+<div class="param">penName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのペンネーム </div>
 <div class="param">nickName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>

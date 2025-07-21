@@ -304,7 +304,7 @@ components:
           type: integer
           format: int64
           description: "投稿ユーザーのid"
-        sentenceUserName:
+        sentencePenName:
           type: string
           description: "投稿ユーザーのペンネーム"
         profileIconImage:
@@ -407,7 +407,7 @@ components:
           type: integer
           format: int64
           description: "小説の作者のid"
-        authorUserName:
+        authorPenName:
           type: string
           description: "小説の作者のペンネーム"
         profileIconImage:
@@ -469,7 +469,7 @@ components:
           type: integer
           format: int64
           description: "ユーザーの一意のid"
-        userName:
+        penName:
           type: string
           description: "ユーザーのペンネーム"
         nickName:
@@ -503,13 +503,13 @@ components:
     UpdateUser:
       type: object
       required:
-        - userName
+        - penName
         - nickName
         - isAnonymous
         - birthYm
         - agreedTermsVersion
       properties:
-        userName:
+        penName:
           type: string
           description: "ユーザーのペンネーム（必須）"
         nickName:
