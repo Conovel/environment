@@ -359,15 +359,18 @@ components:
           description: "新投稿の本文テキスト（必須）"
     EvaluateSentence:
       type: object
+      required:
+        - sentenceId
+        - evaluation
       properties:
         sentenceId:
           type: integer
           format: int64
-          description: "評価対象の投稿のID"
+          description: "評価対象の投稿のID（必須）"
         evaluation:
           type: string
           enum: [good, bad, stay]
-          description: "評価の種類"
+          description: "評価の種類（必須）"
     ConflictSentence:
       allOf:
         - $ref: "#/components/schemas/ErrorResponse"
