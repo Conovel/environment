@@ -50,7 +50,6 @@ services:
       - ./backend/.env
     volumes:
       - db_data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     healthcheck:
       test: ["CMD", "mysql", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}", "-e", "SELECT 1"]
       interval: 10s
