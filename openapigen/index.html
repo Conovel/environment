@@ -1059,14 +1059,15 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
-  "birthYearAndMonth" : "birthYearAndMonth",
   "penName" : "penName",
   "isAnonymous" : true,
   "nickName" : "nickName",
   "profileIconImage" : "profileIconImage",
   "evaluationGoodCount" : 6,
+  "agreedTermsVersion" : 1,
   "userId" : 0,
-  "updatedAt" : "2000-01-23T04:56:07.000+00:00"
+  "updatedAt" : "2000-01-23T04:56:07.000+00:00",
+  "birthYm" : "birthYm"
 }</code></pre>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
@@ -1409,8 +1410,9 @@ font-style: italic;
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
 <div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
 <div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
-<div class="param">birthYearAndMonth (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
+<div class="param">birthYm (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
 <div class="param">isAnonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
+<div class="param">agreedTermsVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 同意した利用規約のバージョン </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

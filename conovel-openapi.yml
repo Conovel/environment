@@ -494,12 +494,15 @@ components:
         - $ref: "#/components/schemas/User"
         - type: object
           properties:
-            birthYearAndMonth:
+            birthYm:
               type: string
               description: "ユーザーの生年月（YYYY/MM）"
             isAnonymous:
               type: boolean
               description: "匿名設定"
+            agreedTermsVersion:
+              type: integer
+              description: "同意した利用規約のバージョン"
     UpdateUser:
       type: object
       required:
