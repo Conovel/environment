@@ -1198,7 +1198,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#User">User</a>
+      <a href="#ViewMeUser">ViewMeUser</a>
       
     </div>
 
@@ -1209,11 +1209,14 @@ font-style: italic;
     <pre class="example"><code>{
   "createdAt" : "2000-01-23T04:56:07.000+00:00",
   "penName" : "penName",
+  "isAnonymous" : true,
   "nickName" : "nickName",
   "profileIconImage" : "profileIconImage",
   "evaluationGoodCount" : 6,
+  "agreedTermsVersion" : 1,
   "userId" : 0,
-  "updatedAt" : "2000-01-23T04:56:07.000+00:00"
+  "updatedAt" : "2000-01-23T04:56:07.000+00:00",
+  "birthYm" : "birthYm"
 }</code></pre>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
@@ -1234,7 +1237,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     ユーザー情報の更新に成功
-        <a href="#User">User</a>
+        <a href="#ViewMeUser">ViewMeUser</a>
     <h4 class="field-label">422</h4>
     ユーザー情報の更新に失敗
         <a href="#ErrorResponse">ErrorResponse</a>

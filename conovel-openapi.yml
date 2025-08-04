@@ -167,7 +167,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/ViewMeUser"
         '422':
           description: "ユーザー情報の更新に失敗"
           content:
