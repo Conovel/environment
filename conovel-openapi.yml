@@ -167,7 +167,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/ViewMeUser"
         '422':
           description: "ユーザー情報の更新に失敗"
           content:
@@ -304,7 +304,7 @@ components:
           type: integer
           format: int64
           description: "投稿ユーザーのid"
-        sentenceUserName:
+        sentencePenName:
           type: string
           description: "投稿ユーザーのペンネーム"
         profileIconImage:
@@ -341,29 +341,36 @@ components:
           $ref: "#/components/schemas/Sentences"
     PostSentence:
       type: object
+      required:
+        - parentSentenceId
+        - parentUpdatedAt
+        - sentence
       properties:
         parentSentenceId:
           type: integer
           format: int64
-          description: "親投稿のid"
+          description: "親投稿のid（必須）"
         parentUpdatedAt:
           type: string
           format: date-time
-          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)"
+          description: "親投稿の修正日時(投稿中の親投稿の更新有無を確認するため)（必須）"
         sentence:
           type: string
-          description: "新投稿の本文テキスト"
+          description: "新投稿の本文テキスト（必須）"
     EvaluateSentence:
       type: object
+      required:
+        - sentenceId
+        - evaluation
       properties:
         sentenceId:
           type: integer
           format: int64
-          description: "評価対象の投稿のID"
+          description: "評価対象の投稿のID（必須）"
         evaluation:
           type: string
           enum: [good, bad, stay]
-          description: "評価の種類"
+          description: "評価の種類（必須）"
     ConflictSentence:
       allOf:
         - $ref: "#/components/schemas/ErrorResponse"
@@ -400,7 +407,7 @@ components:
           type: integer
           format: int64
           description: "小説の作者のid"
-        authorUserName:
+        authorPenName:
           type: string
           description: "小説の作者のペンネーム"
         profileIconImage:
@@ -462,7 +469,7 @@ components:
           type: integer
           format: int64
           description: "ユーザーの一意のid"
-        userName:
+        penName:
           type: string
           description: "ユーザーのペンネーム"
         nickName:
@@ -487,27 +494,45 @@ components:
         - $ref: "#/components/schemas/User"
         - type: object
           properties:
-            birthYearAndMonth:
+            birthYm:
               type: string
               description: "ユーザーの生年月（YYYY/MM）"
             isAnonymous:
               type: boolean
               description: "匿名設定"
+            agreedTermsVersion:
+              type: integer
+              description: "同意した利用規約のバージョン"
     UpdateUser:
       type: object
+      required:
+        - penName
+        - nickName
+        - isAnonymous
+        - birthYm
+        - agreedTermsVersion
       properties:
-        userName:
+        penName:
           type: string
-          description: "ユーザーのペンネーム"
+          description: "ユーザーのペンネーム（必須）"
         nickName:
           type: string
-          description: "ユーザーのニックネーム"
+          description: "ユーザーのニックネーム（必須）"
         isAnonymous:
           type: boolean
-          description: "匿名設定"
+          description: "匿名設定（必須）"
         profileIconImage:
           type: string
           description: "ユーザーアイコン画像のurl"
+        birthYm:
+          type: string
+          description: "ユーザーの生年月（YYYY/MM）（必須）"
+        agreedTermsVersion:
+          type: integer
+          description: "同意した利用規約のバージョン（必須）"
+        remarks:
+          type: string
+          description: "ユーザーの備考"
     ErrorResponse:
       type: object
       properties:
