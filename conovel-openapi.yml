@@ -462,6 +462,10 @@ components:
             overview:
               type: string
               description: "小説のあらすじ"
+            firstSentenceId:
+              type: integer
+              format: int64
+              description: "小説の最初の投稿のid"
     User:
       type: object
       properties:
