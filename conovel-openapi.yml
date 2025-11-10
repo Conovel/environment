@@ -316,6 +316,10 @@ components:
         evaluationStayCount:
           type: integer
           description: "投稿に対するStay評価の数"
+        userEvaluation:
+          type: string
+          enum: [good, bad, stay, null]
+          description: "投稿に対するログインユーザーの評価状態"
         createdAt:
           type: string
           format: date-time
