@@ -343,6 +343,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "userEvaluation" : "good",
   "sentenceId" : 0,
   "evaluationGoodCount" : 6,
   "evaluationStayCount" : 1
@@ -1423,6 +1424,9 @@ font-style: italic;
       <div class="param">sentenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 評価対象の投稿のID format: int64</div>
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Good評価の数 format: int64</div>
 <div class="param">evaluationStayCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Stay評価の数 format: int64</div>
+<div class="param">userEvaluation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 投稿に対するログインユーザーの評価状態 </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">good</div><div class="param-enum">bad</div><div class="param-enum">stay</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

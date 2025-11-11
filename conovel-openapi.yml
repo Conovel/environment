@@ -394,6 +394,10 @@ components:
           type: integer
           format: int64
           description: "Stay評価の数"
+        userEvaluation:
+          type: string
+          enum: [good, bad, stay, null]
+          description: "投稿に対するログインユーザーの評価状態"
     NovelListItem:
       type: object
       properties:
