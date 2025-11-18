@@ -316,6 +316,10 @@ components:
         evaluationStayCount:
           type: integer
           description: "投稿に対するStay評価の数"
+        userEvaluation:
+          type: string
+          enum: [good, bad, stay, null]
+          description: "投稿に対するログインユーザーの評価状態"
         createdAt:
           type: string
           format: date-time
@@ -390,6 +394,10 @@ components:
           type: integer
           format: int64
           description: "Stay評価の数"
+        userEvaluation:
+          type: string
+          enum: [good, bad, stay, null]
+          description: "投稿に対するログインユーザーの評価状態"
     NovelListItem:
       type: object
       properties:
@@ -462,6 +470,10 @@ components:
             overview:
               type: string
               description: "小説のあらすじ"
+            firstSentenceId:
+              type: integer
+              format: int64
+              description: "小説の最初の投稿のid"
     User:
       type: object
       properties:
