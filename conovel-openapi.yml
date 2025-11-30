@@ -207,7 +207,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"  
+                $ref: "#/components/schemas/ErrorResponse"
+  /users/me/viewedLastSentence/{titleId}:
+    get:
+      tags:
+        - users
+      operationId: getViewedLastSentenceByMe
+      summary: "小説の中で自分自身が閲覧した最後の投稿を取得（認証あり）"
+      parameters:
+        - name: titleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "小説の中で自分自身が閲覧した最後の投稿"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewSentence"
+        '404':
+          description: "小説の中で自分自身が閲覧した最後の投稿が見つからない"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /users/{userId}:
     get:
       tags:
