@@ -213,7 +213,7 @@ paths:
       tags:
         - users
       operationId: getViewedLastSentenceByMe
-      summary: "小説の中で自分自身が閲覧した最後の投稿を取得（認証あり）"
+      summary: "小説の中で自分自身が最後に閲覧した投稿のIDを取得（認証あり）"
       parameters:
         - name: titleId
           in: path
@@ -222,7 +222,7 @@ paths:
             type: integer
       responses:
         '200':
-          description: "小説の中で自分自身が閲覧した最後の投稿"
+          description: "説の中で自分自身が最後に閲覧した投稿のID"
           content:
             application/json:
               schema:
