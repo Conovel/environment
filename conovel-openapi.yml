@@ -540,7 +540,7 @@ components:
           properties:
             birthYm:
               type: string
-              description: "ユーザーの生年月（YYYY/MM）"
+              description: "ユーザーの生年月（YYYYMM）"
             isAnonymous:
               type: boolean
               description: "匿名設定"
@@ -570,7 +570,7 @@ components:
           description: "ユーザーアイコン画像のurl"
         birthYm:
           type: string
-          description: "ユーザーの生年月（YYYY/MM）（必須）"
+          description: "ユーザーの生年月（YYYYMM）（必須）"
         agreedTermsVersion:
           type: integer
           description: "同意した利用規約のバージョン（必須）"
