@@ -222,13 +222,13 @@ paths:
             type: integer
       responses:
         '200':
-          description: "説の中で自分自身が最後に閲覧した投稿のID"
+          description: "小説の中で自分自身が最後に閲覧した投稿のID"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SentenceIdOnly"
         '404':
-          description: "小説の中で自分自身が閲覧した最後の投稿が見つからない"
+          description: "小説の中で自分自身が最後に閲覧した投稿が見つからない"
           content:
             application/json:
               schema:
