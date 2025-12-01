@@ -23,7 +23,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ViewSentence"
+                $ref: "#/components/schemas/SentenceIdOnly"
         '422':
           description: "新規投稿の追加に失敗"
           content:
@@ -207,7 +207,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"  
+                $ref: "#/components/schemas/ErrorResponse"
+  /users/me/viewedLastSentence/{titleId}:
+    get:
+      tags:
+        - users
+      operationId: getViewedLastSentenceByMe
+      summary: "小説の中で自分自身が最後に閲覧した投稿のIDを取得（認証あり）"
+      parameters:
+        - name: titleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "小説の中で自分自身が最後に閲覧した投稿のID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SentenceIdOnly"
+        '404':
+          description: "小説の中で自分自身が最後に閲覧した投稿が見つからない"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /users/{userId}:
     get:
       tags:
@@ -343,6 +368,13 @@ components:
           $ref: "#/components/schemas/Sentences"
         children:
           $ref: "#/components/schemas/Sentences"
+    SentenceIdOnly:
+      type: object
+      properties:
+        sentenceId:
+          type: integer
+          format: int64
+          description: "投稿の一意のid"
     PostSentence:
       type: object
       required:
@@ -378,7 +410,7 @@ components:
     ConflictSentence:
       allOf:
         - $ref: "#/components/schemas/ErrorResponse"
-        - $ref: "#/components/schemas/ViewSentence"    
+        - $ref: "#/components/schemas/SentenceIdOnly"    
     ViewEvaluation:
       type: object
       properties:
@@ -508,7 +540,7 @@ components:
           properties:
             birthYm:
               type: string
-              description: "ユーザーの生年月（YYYY/MM）"
+              description: "ユーザーの生年月（YYYYMM）"
             isAnonymous:
               type: boolean
               description: "匿名設定"
@@ -538,7 +570,7 @@ components:
           description: "ユーザーアイコン画像のurl"
         birthYm:
           type: string
-          description: "ユーザーの生年月（YYYY/MM）（必須）"
+          description: "ユーザーの生年月（YYYYMM）（必須）"
         agreedTermsVersion:
           type: integer
           description: "同意した利用規約のバージョン（必須）"

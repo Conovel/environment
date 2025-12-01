@@ -219,6 +219,7 @@ font-style: italic;
   <li><a href="#getNovelsByUserId"><code><span class="http-method">get</span> /users/{userId}/postedNovels</code></a></li>
   <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{userId}</code></a></li>
   <li><a href="#getUserByMe"><code><span class="http-method">get</span> /users/me</code></a></li>
+  <li><a href="#getViewedLastSentenceByMe"><code><span class="http-method">get</span> /users/me/viewedLastSentence/{titleId}</code></a></li>
   <li><a href="#getViewedNovelsByMe"><code><span class="http-method">get</span> /users/me/viewedNovels</code></a></li>
   <li><a href="#updateUserByMe"><code><span class="http-method">post</span> /users/me/update</code></a></li>
   </ul>
@@ -244,7 +245,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -285,7 +286,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -352,7 +353,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -428,7 +429,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -505,7 +506,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -632,7 +633,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -680,7 +681,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#ViewSentence">ViewSentence</a>
+      <a href="#SentenceIdOnly">SentenceIdOnly</a>
       
     </div>
 
@@ -689,162 +690,24 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "parent" : {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  },
-  "children" : [ {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  }, {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  } ],
-  "main" : {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  },
-  "parallels" : [ {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  }, {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  } ]
+  "sentenceId" : 0
 }</code></pre>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "parent" : {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  },
-  "children" : [ {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  }, {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  } ],
-  "main" : {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  },
+  "sentenceId" : 1,
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
-  },
-  "parallels" : [ {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  }, {
-    "sentence" : "sentence",
-    "createdAt" : "2000-01-23T04:56:07.000+00:00",
-    "sentencePenName" : "sentencePenName",
-    "userEvaluation" : "good",
-    "profileIconImage" : "profileIconImage",
-    "sentenceId" : 0,
-    "evaluationGoodCount" : 1,
-    "sentenceUserId" : 6,
-    "evaluationStayCount" : 5,
-    "updatedAt" : "2000-01-23T04:56:07.000+00:00"
-  } ]
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -857,7 +720,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">201</h4>
     新規投稿の追加に成功
-        <a href="#ViewSentence">ViewSentence</a>
+        <a href="#SentenceIdOnly">SentenceIdOnly</a>
     <h4 class="field-label">422</h4>
     新規投稿の追加に失敗
         <a href="#ErrorResponse">ErrorResponse</a>
@@ -887,7 +750,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -970,7 +833,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -1033,7 +896,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -1093,7 +956,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -1111,6 +974,63 @@ font-style: italic;
         <a href="#ViewMeUser">ViewMeUser</a>
     <h4 class="field-label">404</h4>
     ユーザーが見つからない
+        <a href="#ErrorResponse">ErrorResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getViewedLastSentenceByMe"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/me/viewedLastSentence/{titleId}</code></pre></div>
+    <div class="method-summary">小説の中で自分自身が最後に閲覧した投稿のIDを取得（認証あり） (<span class="nickname">getViewedLastSentenceByMe</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">titleId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SentenceIdOnly">SentenceIdOnly</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "sentenceId" : 0
+}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "error" : {
+    "code" : 6,
+    "message" : "message"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    小説の中で自分自身が最後に閲覧した投稿のID
+        <a href="#SentenceIdOnly">SentenceIdOnly</a>
+    <h4 class="field-label">404</h4>
+    小説の中で自分自身が最後に閲覧した投稿が見つからない
         <a href="#ErrorResponse">ErrorResponse</a>
   </div> <!-- method -->
   <hr/>
@@ -1170,7 +1090,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -1242,7 +1162,7 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error" : {
-    "code" : 5,
+    "code" : 6,
     "message" : "message"
   }
 }</code></pre>
@@ -1277,6 +1197,7 @@ font-style: italic;
     <li><a href="#NovelListItem"><code>NovelListItem</code> - </a></li>
     <li><a href="#PostSentence"><code>PostSentence</code> - </a></li>
     <li><a href="#Sentence"><code>Sentence</code> - </a></li>
+    <li><a href="#SentenceIdOnly"><code>SentenceIdOnly</code> - </a></li>
     <li><a href="#UpdateUser"><code>UpdateUser</code> - </a></li>
     <li><a href="#User"><code>User</code> - </a></li>
     <li><a href="#ViewEvaluation"><code>ViewEvaluation</code> - </a></li>
@@ -1289,10 +1210,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">error (optional)</div><div class="param-desc"><span class="param-type"><a href="#ErrorResponse_error">ErrorResponse_error</a></span>  </div>
-<div class="param">main (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">Sentence</a></span>  </div>
-<div class="param">parallels (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
-<div class="param">children (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sentence">array[Sentence]</a></span>  </div>
+<div class="param">sentenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の一意のid format: int64</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -1392,6 +1310,13 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="SentenceIdOnly"><code>SentenceIdOnly</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">sentenceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> 投稿の一意のid format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="UpdateUser"><code>UpdateUser</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -1399,7 +1324,7 @@ font-style: italic;
 <div class="param">nickName </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーのニックネーム（必須） </div>
 <div class="param">isAnonymous </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定（必須） </div>
 <div class="param">profileIconImage (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーアイコン画像のurl </div>
-<div class="param">birthYm </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM）（必須） </div>
+<div class="param">birthYm </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYYMM）（必須） </div>
 <div class="param">agreedTermsVersion </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 同意した利用規約のバージョン（必須） </div>
 <div class="param">remarks (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの備考 </div>
     </div>  <!-- field-items -->
@@ -1440,7 +1365,7 @@ font-style: italic;
 <div class="param">evaluationGoodCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Good評価の数 </div>
 <div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの作成日時 format: date-time</div>
 <div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> ユーザーの修正日時 format: date-time</div>
-<div class="param">birthYm (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYY/MM） </div>
+<div class="param">birthYm (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ユーザーの生年月（YYYYMM） </div>
 <div class="param">isAnonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> 匿名設定 </div>
 <div class="param">agreedTermsVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 同意した利用規約のバージョン </div>
     </div>  <!-- field-items -->
